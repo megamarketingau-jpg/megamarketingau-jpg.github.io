@@ -24,22 +24,21 @@ fi
 
 find "$SRC" -name "*.html" | while read -r src_file; do
   rel_path="${src_file#$SRC/}"
-  dst_file="$DST/$rel_path"
-  dst_dir="$(dirname "$dst_file")"
+  rel_dir="$(dirname "$rel_path")"
+  dst_dir="$DST/$rel_dir"
 
   # Derive per-file password
-  password=$(echo -n "$rel_path" | openssl dgst -sha256 -hmac "$ENCRYPTION_MASTER_SECRET" | awk '{print $2}')
+  password=$(echo -n "$rel_path" | openssl dgst -sha256 -hmac "$ENCRYPTION_MASTER_SECRET" | awk '{print $NF}')
 
   mkdir -p "$dst_dir"
-  staticrypt "$src_file" --password "$password" \
+  staticrypt "$src_file" \
+    -p "$password" \
+    -d "$dst_dir" \
     --short \
-    --template-title "Mega Marketing | Access Required" \
-    --template-instructions "Enter the password provided by your Mega Marketing account manager." \
-    --output "$dst_file" \
     --remember 30 \
-    2>/dev/null
+    --config false
 
-  echo "Encrypted: $rel_path"
+  echo "Encrypted: $rel_path → $dst_dir"
 done
 
 # Stage the public/ output

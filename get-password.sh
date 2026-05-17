@@ -11,6 +11,6 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-password=$(echo -n "$1" | openssl dgst -sha256 -hmac "$ENCRYPTION_MASTER_SECRET" | awk '{print $2}')
+password=$(echo -n "$1" | openssl dgst -sha256 -hmac "$ENCRYPTION_MASTER_SECRET" | awk '{print $NF}')
 echo "File:     $1"
 echo "Password: $password"
