@@ -223,6 +223,12 @@
   .phase .owner { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--client-secondary); margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--rule); }
   .phase.now { border-color: var(--client-primary); box-shadow: 0 8px 24px rgba(15,77,58,0.08); background: var(--client-primary-soft); }
   .phase.now .num { color: var(--client-primary); }
+  /* Force dark text on the phase cards — overrides .section.green's white-text cascade */
+  .section.green .phase h4 { color: var(--client-primary); }
+  .section.green .phase p { color: var(--ink); }
+  .section.green .phase .num { color: var(--client-secondary); }
+  .section.green .phase.now .num { color: var(--client-primary); }
+  .section.green .phase .owner { color: var(--client-secondary); }
   @media (max-width: 900px) { .roadmap { grid-template-columns: repeat(2, 1fr); } }
 
   /* -- Website plan -------------------------------------------------- */
@@ -390,7 +396,7 @@
     <p class="lead">Every colour, font, and word in this brand traces back to real evidence — 55 Trustpilot reviews from Badal-Umrah buyers, 47 Reddit and Quora threads, 47 competitor ads, and a four-country keyword scrape. Identity sits in <code>brandguide.md</code>; the source corpus sits in <code>data/industry-research-amal-umrah-20260525.md</code>.</p>
 
     <div class="callout">
-      <strong>Positioning lock —</strong> Australia's Badal Umrah: performed by named Mecca-resident scholars, AU-priced, AU-supported, with verified AU imam endorsement. Four claims; no global competitor can make all four simultaneously.
+      <strong>Positioning lock —</strong> Australia's Badal Umrah: performed by named, qualified Mecca-based partners, AU-priced, AU-supported, with verified AU imam endorsement. Four claims; no global competitor can make all four simultaneously.
     </div>
 
     <h3 style="margin-top: 56px; font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600;">Logo system</h3>
@@ -436,7 +442,7 @@
     <h3 style="margin-top: 56px; font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600;">Typography</h3>
     <div class="type-card">
       <div class="display">Honour them in Mecca.<span class="ar">أمل عمرة</span></div>
-      <p class="body-sample">When a loved one passes without completing Umrah, or is too ill or elderly to travel, you can fulfil the rite on their behalf. Amal Umrah arranges Badal Umrah through named scholars in Mecca, delivers HD video proof with your loved one's name visible on screen, and is the only Australian Badal service backed by a named AU imam.</p>
+      <p class="body-sample">When a loved one passes without completing Umrah, or is too ill or elderly to travel, you can fulfil the rite on their behalf. Amal Umrah arranges Badal Umrah through named, qualified partners in Mecca, delivers HD video proof with your loved one's name visible on screen, and is the only Australian Badal service backed by a named AU imam.</p>
       <div class="specs">
         <div><h5>Display / Headings</h5><p><strong>Cormorant Garamond</strong> · Regular, SemiBold</p></div>
         <div><h5>Body / UI</h5><p><strong>Inter</strong> · Regular, Medium, SemiBold</p></div>
@@ -475,7 +481,7 @@
       <div class="voice-card"><div class="num">01</div><h4>Reverent</h4><p>Treats the rite as sacred. Never transactional, never urgent-discount-coded. <em>Honour</em> beats <em>buy</em>.</p></div>
       <div class="voice-card"><div class="num">02</div><h4>Australian</h4><p>Spelling, AUD pricing, AEST hours. Plain language — no British or American idiom.</p></div>
       <div class="voice-card"><div class="num">03</div><h4>Faith-fluent</h4><p>Uses Allah ﷻ, the Prophet ﷺ, JazakAllah Khairan naturally. Cites scholars with chapter and verse.</p></div>
-      <div class="voice-card"><div class="num">04</div><h4>Transparent</h4><p>Names the scholar, the institution, the location, the date. Anti-Wakala by design.</p></div>
+      <div class="voice-card"><div class="num">04</div><h4>Transparent</h4><p>Names the partner, the institution, the location, the date. Anti-Wakala by design.</p></div>
       <div class="voice-card"><div class="num">05</div><h4>Calm</h4><p>Buyers are mid-grief or mid-diagnosis. Voice never adds pressure — only reassurance.</p></div>
     </div>
 
@@ -565,7 +571,7 @@
         <ul>
           <li>"Badal Umrah" — the buyer's term, the long-tail keyword.</li>
           <li>Allah ﷻ, the Prophet ﷺ, Sadaqah Jariyah, Inshallah.</li>
-          <li>The scholar's name, the institution, the date, the time.</li>
+          <li>The partner's name, the institution, the date, the time.</li>
           <li>"Honour them" — the verb that converts.</li>
           <li>The eligibility line, in full, every time it matters.</li>
           <li>Australian English. AUD pricing. AEST hours.</li>
@@ -574,7 +580,7 @@
     </div>
 
     <div class="callout compliance">
-      <strong>Mandated on every public surface (ACCC + theological):</strong> the eligibility disclaimer (deceased / terminally ill / severely disabled / permanently unable), the acceptance disclaimer ("acceptance is Allah's alone"), and proof-substantiation for every "named scholar / GPS-verified / HD video proof / on-screen name" claim.
+      <strong>Mandated on every public surface (ACCC + theological):</strong> the eligibility disclaimer (deceased / terminally ill / severely disabled / permanently unable), the acceptance disclaimer ("acceptance is Allah's alone"), and proof-substantiation for every "named partner / GPS-verified / HD video proof / on-screen name" claim.
     </div>
   </div>
 </section>
@@ -607,10 +613,10 @@
       <div class="tier featured">
         <div class="name">Badal Umrah · Ramadan</div>
         <div class="price">A$449–499</div>
-        <div class="price-note">Premium reflects scholar scarcity</div>
+        <div class="price-note">Premium reflects partner scarcity</div>
         <ul>
           <li>Everything in Standard, performed during the blessed month</li>
-          <li>Scholar dispatch prioritised against demand surge</li>
+          <li>Partner dispatch prioritised against demand surge</li>
           <li>Up to 10-day proof delivery (Ramadan SLA)</li>
           <li>Eid certificate option for family gifting</li>
           <li>Bookable as a recurring annual rite</li>
@@ -629,12 +635,12 @@
           <li>Pre-Hajj briefing call with the founder</li>
           <li>Lifetime digital archive of the proof artefacts</li>
         </ul>
-        <div class="note">Anchor: UK Hajj-Badal benchmark ≈ A$4,150 · offshore mid-tier ≈ A$3,890. AU premium covers AU support hours + named scholarly cover.</div>
+        <div class="note">Anchor: UK Hajj-Badal benchmark ≈ A$4,150 · offshore mid-tier ≈ A$3,890. AU premium covers AU support hours + named AU endorsement.</div>
       </div>
     </div>
 
     <div class="callout">
-      <strong>7% AU charity tithe —</strong> applied to every booking and routed to a named AU Islamic-charity partner (to be locked from Islamic Relief AU, Human Appeal AU, or a named mosque charitable arm). One material point above the category norm (5%), and a quiet differentiator the founder can name in every consultation.
+      <strong>7% AU charity contribution —</strong> applied to every booking and routed to a named AU Islamic-charity partner (to be locked from Islamic Relief AU, Human Appeal AU, or a named mosque charitable arm). One material point above the category norm (5%), and a quiet differentiator the founder can name in every consultation.
     </div>
 
     <h3 style="margin-top: 56px; font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600;">The anti-Wakala proof spec — non-negotiable</h3>
@@ -643,7 +649,7 @@
       <li>Beneficiary's name <strong>visible on screen</strong> for the duration of the rite</li>
       <li><strong>GPS overlay</strong> showing the Haram coordinates</li>
       <li><strong>Single-take Niyyah</strong> — no cuts, no edits at the intention moment</li>
-      <li><strong>Scholar's face visible</strong> on camera at the start of the rite</li>
+      <li><strong>Partner's face visible</strong> on camera at the start of the rite</li>
       <li><strong>Timestamp on the certificate</strong> matching the video metadata</li>
       <li>Independent <strong>witness statement</strong> at the certificate's foot</li>
     </ul>
@@ -711,7 +717,7 @@
         </div>
         <div>
           <h5>The fix</h5>
-          <p>Plain-English policy covering: cancellable before scholar dispatched · non-refundable after Ihram begins · re-perform at our cost if proof fails to meet the six-point spec. We'll draft; you and AU legal review and sign.</p>
+          <p>Plain-English policy covering: cancellable before partner dispatched · non-refundable after Ihram begins · re-perform at our cost if proof fails to meet the six-point spec. We'll draft; you and AU legal review and sign.</p>
         </div>
       </div>
       <div class="meta-line"><span><strong>Owner:</strong> Founder + AU legal</span><span><strong>SLA:</strong> Before first ad</span><span><strong>Brandguide §:</strong> 14 · Compliance</span></div>
@@ -739,17 +745,17 @@
     <div class="blocker">
       <div class="head">
         <span class="n">05</span>
-        <h3>Lock the in-Mecca operations partner</h3>
+        <h3>Confirm the Mecca-based partner</h3>
         <span class="tag">P1 · Before first ad</span>
       </div>
       <div class="body">
         <div>
           <h5>Why it's blocking</h5>
-          <p>Without a named, Saudi-licensed scholar at Umm Al Qura (or equivalent), no rite can be performed. "Anonymous students of knowledge" is the failure mode the cautionary 1-star reviews document. Buyers ask for the name before they pay.</p>
+          <p>We work with those who are qualified and able to perform the rite on your behalf — a trustworthy Muslim who has personally completed their own Umrah, lives in or has reliable access to Mecca, and can be named publicly. Buyers want to know who is performing the rite before they pay; "anonymous" is the cautionary failure mode the research brief documents. The bar is trust and qualification, not a scholarly title.</p>
         </div>
         <div>
           <h5>The fix</h5>
-          <p>Identify a named partner. Verify their Saudi licence. Confirm they have personally completed their own Umrah (per the Quora top-answer requirement that surfaced in research). Sign a written operating agreement.</p>
+          <p>Identify a named partner. Confirm they have personally completed their own Umrah. Capture a headshot + short bio for the website. Sign a written operating agreement covering proof-spec adherence, response time, and re-perform-at-cost terms.</p>
         </div>
       </div>
       <div class="meta-line"><span><strong>Owner:</strong> Founder</span><span><strong>SLA:</strong> Before first ad</span><span><strong>Brandguide §:</strong> 3 · Leadership + 12 · Partners</span></div>
@@ -772,7 +778,7 @@
       <div class="phase now">
         <div class="num">01</div>
         <h4>Approve the brand</h4>
-        <p>This meeting. Sign-off on identity, voice, palette, logos, copy first-drafts, pricing recommendation, 7% tithe partner choice.</p>
+        <p>This meeting. Sign-off on identity, voice, palette, logos, copy first-drafts, pricing recommendation, 7% charity contribution partner choice.</p>
         <div class="owner">You · today</div>
       </div>
       <div class="phase">
@@ -808,7 +814,7 @@
       </div>
       <div>
         <h4 style="color: var(--client-accent); font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; text-transform: none; letter-spacing: 0;">What the founder owns</h4>
-        <p style="color: rgba(255,255,255,0.82); font-size: 14px;">All five P1 blockers · scholar relationships (AU endorser + in-Mecca operations partner) · faith-content sign-off · final pricing · final copy approvals · payment processor confirmation with scholar.</p>
+        <p style="color: rgba(255,255,255,0.82); font-size: 14px;">All five P1 blockers · partner + endorser relationships (AU scholarly endorser + Mecca-based partner) · faith-content sign-off · final pricing · final copy approvals · payment processor confirmation with your scholar advisor.</p>
       </div>
       <div>
         <h4 style="color: var(--client-accent); font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; text-transform: none; letter-spacing: 0;">What we share</h4>
@@ -823,14 +829,14 @@
   <div class="section-inner">
     <span class="eyebrow">07 — How the process actually works</span>
     <h2>WhatsApp is the surface. PopDone is the brain.</h2>
-    <p class="lead">The scholar never logs into a CRM. The customer never logs into anything. Both just see WhatsApp threads. Everything else runs invisibly inside PopDone — the same automation engine that already powers four other Mega Marketing clients today.</p>
+    <p class="lead">The Mecca-based partner never logs into a CRM. The customer never logs into anything. Both just see WhatsApp threads. Everything else runs invisibly inside PopDone — the same automation engine that already powers four other Mega Marketing clients today.</p>
 
     <div class="callout">
-      <strong>One sentence —</strong> intake form fires the booking into PopDone; PopDone sends WhatsApp to scholar + customer; scholar performs the rite and replies with video; PopDone parses the reply, runs the six-point proof check, generates the certificate, and delivers the package back to the customer. No new tooling required for Phase 1.
+      <strong>One sentence —</strong> intake form fires the booking into PopDone; PopDone sends WhatsApp to the partner + customer; partner performs the rite and replies with video; PopDone parses the reply, runs the six-point proof check, generates the certificate, and delivers the package back to the customer. No new tooling required for Phase 1.
     </div>
 
     <h3 style="margin-top: 56px; font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600;">The flow, end-to-end</h3>
-    <p>Three lanes, seven steps. The scholar lane and the customer lane only ever see WhatsApp. PopDone holds every detail, fires every message, and never asks either side to log in.</p>
+    <p>Three lanes, seven steps. The partner lane and the customer lane only ever see WhatsApp. PopDone holds every detail, fires every message, and never asks either side to log in.</p>
 
     <div class="swimlanes">
       <!-- Customer lane -->
@@ -864,15 +870,15 @@
           <div class="step green-tint">
             <span class="n">02</span>
             <strong>Creates opportunity, dispatches both sides</strong>
-            Custom Fields filled (beneficiary EN + AR · relation · duaa · booking ID like AU-2026-0142 · tier · photo URL). Stripe charge captured. Two WhatsApps fire automatically — one to customer (booking confirmation), one to scholar (assignment with all details).
-            <div class="arrow">→ scholar receives assignment</div>
+            Custom Fields filled (beneficiary EN + AR · relation · duaa · booking ID like AU-2026-0142 · tier · photo URL). Stripe charge captured. Two WhatsApps fire automatically — one to customer (booking confirmation), one to the partner (assignment with all details).
+            <div class="arrow">→ partner receives assignment</div>
           </div>
           <div class="step empty"></div>
           <div class="step empty"></div>
           <div class="step green-tint">
             <span class="n">05</span>
             <strong>Parses reply, runs proof check, builds certificate, delivers</strong>
-            Video lands in PopDone via the existing WhatsApp conversation. Workflow detects "Done AU-XXXX" pattern → fires a six-point proof-check task to Amor. Pass → Make.com builds the PDF certificate from a template (timestamp, beneficiary, scholar, witness). Fail → workflow messages scholar to re-shoot at our cost. Delivery message + email fire automatically.
+            Video lands in PopDone via the existing WhatsApp conversation. Workflow detects "Done AU-XXXX" pattern → fires a six-point proof-check task to Amor. Pass → Make.com builds the PDF certificate from a template (timestamp, beneficiary, partner, witness). Fail → workflow messages the partner to re-shoot at our cost. Delivery message + email fire automatically.
             <div class="arrow">→ customer receives proof</div>
           </div>
           <div class="step empty"></div>
@@ -884,9 +890,9 @@
         </div>
       </div>
 
-      <!-- Scholar lane -->
+      <!-- Mecca-based partner lane -->
       <div>
-        <div class="lane-header scholar">Scholar<span class="sub">Mecca</span></div>
+        <div class="lane-header scholar">Partner<span class="sub">Mecca</span></div>
         <div class="lane-col">
           <div class="step empty"></div>
           <div class="step empty"></div>
@@ -912,7 +918,7 @@
     <div class="feature-grid">
       <div class="feature">
         <span class="icon">📱</span>
-        <h3>Scholar's only tool is WhatsApp + a phone camera</h3>
+        <h3>Partner's only tool is WhatsApp + a phone camera</h3>
         <p>No CRM training. No web portal to learn. No Arabic UI to translate. We ship them a booking-ID format, a six-point shot list, and the free Timestamp Camera app — that's the onboarding. After two bookings they hold the SOP in their head.</p>
       </div>
       <div class="feature">
@@ -927,11 +933,11 @@
       </div>
     </div>
 
-    <h3 style="margin-top: 64px; font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600;">The scholar's 8-step SOP</h3>
-    <p>This is the document the scholar prints, laminates, and keeps with their phone. Translated into Arabic and walked through together during onboarding.</p>
+    <h3 style="margin-top: 64px; font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600;">The partner's 8-step SOP</h3>
+    <p>This is the document the partner prints, laminates, and keeps with their phone. Translated into Arabic and walked through together during onboarding.</p>
     <div class="sop-grid">
       <div class="sop-step"><div class="num">01</div><h5>Read assignment</h5><p>Booking ID, beneficiary name (EN + AR), relation, custom duaa text. Confirm receipt in the thread.</p></div>
-      <div class="sop-step"><div class="num">02</div><h5>Prepare name plate</h5><p>Write the beneficiary's name in clear large script on the prepared card stock. Photograph it once.</p></div>
+      <div class="sop-step"><div class="num">02</div><h5>Prepare name plate</h5><p>Write the beneficiary's name in clear, large script on the prepared card stock. This is what appears on screen throughout the rite — no separate photo is needed.</p></div>
       <div class="sop-step"><div class="num">03</div><h5>Open Timestamp Camera</h5><p>App pre-configured to burn GPS coordinates + time + booking ID overlay into every frame.</p></div>
       <div class="sop-step"><div class="num">04</div><h5>Single-take Niyyah</h5><p>Look at camera. State the intention with the beneficiary's name + booking ID audible. No cuts after this moment.</p></div>
       <div class="sop-step"><div class="num">05</div><h5>Tawaf with name plate</h5><p>Hold the name plate visible at the shot-list checkpoints — start of Tawaf, between rounds, at the Black Stone alignment.</p></div>
@@ -941,7 +947,7 @@
     </div>
 
     <div class="callout warn">
-      <strong>What if the proof fails the six-point check?</strong> PopDone messages the scholar with a polite re-shoot request — at our cost, never the customer's. The customer is told only "proof under quality review, ETA 24h." This is the anti-Wakala protection in operation: we'd rather absorb a re-shoot than ship a defective video. The terms of service (Blocker #03) put this in writing.
+      <strong>What if the proof fails the six-point check?</strong> PopDone messages the partner with a polite re-shoot request — at our cost, never the customer's. The customer is told only "proof under quality review, ETA 24h." This is the anti-Wakala protection in operation: we'd rather absorb a re-shoot than ship a defective video. The terms of service (Blocker #03) put this in writing.
     </div>
 
     <h3 style="margin-top: 64px; font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600;">Phase 1 vs Phase 2 — don't over-engineer the launch</h3>
@@ -950,7 +956,7 @@
         <h4>Phase 1 — launch</h4>
         <div class="tag-line">From day one · zero new tooling</div>
         <dl>
-          <dt>Scholar's tool</dt>
+          <dt>Partner's tool</dt>
           <dd>WhatsApp + Timestamp Camera app (free, iOS + Android).</dd>
           <dt>Customer's tool</dt>
           <dd>Website intake form + Stripe AUD checkout + WhatsApp.</dd>
@@ -958,8 +964,8 @@
           <dd>Make.com webhook builds the PDF from a template per booking.</dd>
           <dt>Proof review</dt>
           <dd>Amor runs the manual six-point check inside a PopDone task.</dd>
-          <dt>Multi-scholar</dt>
-          <dd>One named in-Mecca partner (Blocker #05). Single assignment queue.</dd>
+          <dt>Partner roster</dt>
+          <dd>One named Mecca-based partner (Blocker #05). Single assignment queue.</dd>
           <dt>Cost to set up</dt>
           <dd>Zero new tools beyond what PopDone already gives us.</dd>
         </dl>
@@ -968,16 +974,16 @@
         <h4>Phase 2 — scale</h4>
         <div class="tag-line">After ~50 bookings · justified by volume</div>
         <dl>
-          <dt>Scholar's tool</dt>
-          <dd>Custom mini-app at <code>scholar.amalumrah.com.au</code> — pre-fills name plate, records direct to S3, auto-uploads to PopDone via webhook.</dd>
+          <dt>Partner's tool</dt>
+          <dd>Custom mini-app at <code>partner.amalumrah.com.au</code> — pre-fills name plate, records direct to S3, auto-uploads to PopDone via webhook.</dd>
           <dt>Customer's tool</dt>
           <dd>Same intake form + a customer portal showing booking history and Sadaqah Jariyah dashboard (Aisha persona).</dd>
           <dt>Certificate</dt>
           <dd>PopDone native PDF feature once the template is battle-tested.</dd>
           <dt>Proof review</dt>
           <dd>Amin spot-checks 10% · Amor full-checks remainder · AI-assist flags missing on-screen name automatically.</dd>
-          <dt>Multi-scholar</dt>
-          <dd>Round-robin assignment by capacity tag · scholar workload balanced across the team.</dd>
+          <dt>Partner roster</dt>
+          <dd>Round-robin assignment by capacity tag · partner workload balanced across the team.</dd>
           <dt>Cost to set up</dt>
           <dd>One sprint of development. Funded from Phase 1 booking margin, not pre-launch budget.</dd>
         </dl>
@@ -985,7 +991,7 @@
     </div>
 
     <div class="callout">
-      <strong>The headline —</strong> nothing in Phase 1 is bespoke. We use PopDone for what it was built for: WhatsApp-routed sales pipelines with workflow automation. The scholar uses a free phone camera app. The customer uses the same WhatsApp they already have open. We can run the first 50 bookings without writing a single line of new application code.
+      <strong>The headline —</strong> nothing in Phase 1 is bespoke. We use PopDone for what it was built for: WhatsApp-routed sales pipelines with workflow automation. The partner uses a free phone camera app. The customer uses the same WhatsApp they already have open. We can run the first 50 bookings without writing a single line of new application code.
     </div>
   </div>
 </section>
@@ -1003,9 +1009,9 @@
       <div class="page-card"><span class="url">/badal-umrah</span><h4>Badal Umrah</h4><p>The standard service. What it is, who it's for, what the proof artefacts look like, the eligibility line, an FAQ accordion, AUD checkout.</p></div>
       <div class="page-card"><span class="url">/ramadan</span><h4>Ramadan Badal</h4><p>The seasonal tier. Why pricing differs. Booking deadline. Annual recurrence option.</p></div>
       <div class="page-card"><span class="url">/hajj-badal</span><h4>Hajj Badal</h4><p>Limited slots. Application form rather than direct checkout. Pre-Hajj briefing call.</p></div>
-      <div class="page-card"><span class="url">/scholars</span><h4>Our scholars</h4><p>Named in-Mecca operations partner with headshot, bio, Saudi licence. Named AU endorser with headshot, bio, mosque affiliation. The page Tafwiid / ProxyUmrah cannot publish.</p></div>
+      <div class="page-card"><span class="url">/our-team</span><h4>Our team</h4><p>Named Mecca-based partner with headshot, bio, confirmation they have completed their own Umrah. Named AU scholarly endorser with headshot, bio, mosque affiliation. The page global operators cannot publish.</p></div>
       <div class="page-card"><span class="url">/proof</span><h4>How proof works</h4><p>The six-point anti-Wakala spec, illustrated. Sample video. Sample certificate. The page that closes the sceptic.</p></div>
-      <div class="page-card"><span class="url">/about</span><h4>About</h4><p>Founder's story, the why behind the brand, the AU charity tithe partner, the ABN.</p></div>
+      <div class="page-card"><span class="url">/about</span><h4>About</h4><p>Founder's story, the why behind the brand, the AU charity contribution partner, the ABN.</p></div>
       <div class="page-card"><span class="url">/faq</span><h4>FAQ</h4><p>50 + answers seeded from Reddit, Quora, and Trustpilot question patterns — including the living-but-incapable permissibility question.</p></div>
       <div class="page-card"><span class="url">/contact</span><h4>Contact</h4><p>WhatsApp-first. Email second. AU phone third. AEST hours shown. No web-form-first defaults.</p></div>
       <div class="page-card"><span class="url">/journal</span><h4>Journal / Blog</h4><p>Scholarly explainers, family stories with permission, Ramadan reflections. Slow-burn, evergreen, AEO-friendly.</p></div>
@@ -1017,7 +1023,7 @@
     <div class="stack-row">
       <div class="stack-item"><h5>Framework</h5><p>Astro</p><div class="desc">Static-first, fast, AEO-friendly, AU-hosted.</div></div>
       <div class="stack-item"><h5>Hosting</h5><p>Vercel · AU edge</p><div class="desc">Custom domain, SSL, edge caching.</div></div>
-      <div class="stack-item"><h5>Checkout</h5><p>Stripe AUD</p><div class="desc">Scholar to confirm Sharia compliance.</div></div>
+      <div class="stack-item"><h5>Checkout</h5><p>Stripe AUD</p><div class="desc">Scholar advisor to confirm Sharia compliance.</div></div>
       <div class="stack-item"><h5>CRM</h5><p>PopDone (GHL)</p><div class="desc">Lead capture, WhatsApp routing, nurture.</div></div>
       <div class="stack-item"><h5>Booking</h5><p>WhatsApp-first</p><div class="desc">Primary consult channel. PopDone widget fallback.</div></div>
       <div class="stack-item"><h5>Analytics</h5><p>GA4 + GSC</p><div class="desc">AU GA4 property + Search Console verification.</div></div>
@@ -1028,7 +1034,7 @@
       <li>WhatsApp-first contact widget, AEST-hours-aware</li>
       <li>AUD checkout with three named tier options</li>
       <li>Proof-video gallery (post-launch, with customer permission)</li>
-      <li>Named scholar pages with headshots, bios, licences</li>
+      <li>Named partner + AU endorser pages with headshots and bios</li>
       <li>AU imam endorsement card on every key page</li>
       <li>Eligibility-disclaimer banner above every CTA</li>
       <li>WCAG 2.2 AA accessibility · captions on every video</li>
@@ -1062,9 +1068,9 @@
         <li><span class="box"></span><div><strong>Brand approval — the lockups, the palette, the typography</strong><small>Approve as drafted, request changes, or sign off subject to a named tweak.</small></div></li>
         <li><span class="box"></span><div><strong>Voice approval — the five attributes and the language locks</strong><small>"Badal Umrah" not "Proxy" · Allah ﷻ not "God" · "Honour" beats "Buy".</small></div></li>
         <li><span class="box"></span><div><strong>Customer avatars — the three personas as written</strong><small>Sara (bereaved), Ahmed (caregiver), Aisha (recurring sadaqah).</small></div></li>
-        <li><span class="box"></span><div><strong>Pricing — A$299–349 / A$449–499 / A$3,800–4,500 plus 7% tithe</strong><small>Approve the bands or anchor a different number.</small></div></li>
-        <li><span class="box"></span><div><strong>Charity tithe partner — Islamic Relief AU, Human Appeal AU, or a named mosque</strong><small>One name. The 7% language goes nowhere until it's locked.</small></div></li>
-        <li><span class="box"></span><div><strong>Founder name + role for the brand guide §3 Leadership entry</strong><small>Plus headshot and short bio for the website's About + Scholars pages.</small></div></li>
+        <li><span class="box"></span><div><strong>Pricing — A$299–349 / A$449–499 / A$3,800–4,500 plus 7% charity contribution</strong><small>Approve the bands or anchor a different number.</small></div></li>
+        <li><span class="box"></span><div><strong>Charity contribution partner — Islamic Relief AU, Human Appeal AU, or a named mosque</strong><small>One name. The 7% language goes nowhere until it's locked.</small></div></li>
+        <li><span class="box"></span><div><strong>Founder name + role for the brand guide §3 Leadership entry</strong><small>Plus headshot and short bio for the website's About + Our team pages.</small></div></li>
         <li><span class="box"></span><div><strong>Team alignment — Aqsa (ads) · Lorelei (brand) · Sharif (website) · Amor or Ruby (VA)</strong><small>Confirm allocation. We'll loop them in this week.</small></div></li>
       </ul>
     </div>
@@ -1076,7 +1082,7 @@
         <li><span class="box"></span><div><strong>Blocker 02 — brief AU lawyer on privacy policy</strong><small>We provide the three specific clauses. They drop them into the template.</small></div></li>
         <li><span class="box"></span><div><strong>Blocker 03 — brief AU lawyer on terms + refund policy</strong><small>We provide the anti-Wakala protection wording. They turn it into binding contract language.</small></div></li>
         <li><span class="box"></span><div><strong>Blocker 04 — open AU endorser outreach</strong><small>ANIC, AFIC, Lebanese Muslim Association NSW, or a named local imam. Goal: written endorsement + headshot + bio within 3–4 weeks.</small></div></li>
-        <li><span class="box"></span><div><strong>Blocker 05 — open in-Mecca operations partner conversation</strong><small>Named scholar at Umm Al Qura or equivalent. Saudi-licensed. Verify own-Umrah completed. Signed operating agreement before first ad.</small></div></li>
+        <li><span class="box"></span><div><strong>Blocker 05 — open Mecca-based partner conversation</strong><small>A trustworthy named individual who has personally completed their own Umrah. Saudi residency or reliable Mecca access. Signed operating agreement before first ad.</small></div></li>
         <li><span class="box"></span><div><strong>IP Australia — file a trademark search on "Amal Umrah" and "أمل عمرة"</strong><small>Before the logo is committed to print or fully launched. Inexpensive insurance.</small></div></li>
         <li><span class="box"></span><div><strong>Reserve <code>@amalumrah</code> across Instagram, Facebook, WhatsApp Business, YouTube, TikTok, LinkedIn, X</strong><small>Even if unused. Domain squatting risk is low; handle squatting is the real risk.</small></div></li>
       </ul>

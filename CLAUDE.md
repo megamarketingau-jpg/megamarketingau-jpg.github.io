@@ -31,3 +31,32 @@ Example: `2026-05-labor-care-ads-report.html`
 
 ## Commit style
 Add:, Fix:, Update:, Remove: — same as workspace repo
+
+## Password policy (since 26/05/2026)
+
+**One password per client. Same password for every report issued to that client.**
+
+- Passwords are derived from the client slug via `HMAC-SHA256(ENCRYPTION_MASTER_SECRET, "client:<slug>")` truncated to 16 characters. Deterministic — no separate password store, no document drift.
+- Client slug = the kebab-case folder name minus the `client-` prefix (e.g. `amal-umrah`, `lynbrook-optical`, `uniq-cctv`).
+- The recognised slug registry lives at `.client-slugs`. Add a new line every time a new client onboards. Order doesn't matter; the scripts sort longest-first so `selective-support` matches before `support`.
+- The encrypt step (`encrypt.sh`, auto-run by the pre-commit hook) extracts the slug from each filename matching `YYYY-MM-<slug>-<type>.html`, derives the password, encrypts. Files that don't match any known slug fall back to a path-derived password (legacy mode); fix by adding the slug + re-pushing.
+
+### Lookup
+
+```bash
+# By client (preferred — same password every time):
+bash get-password.sh amal-umrah
+
+# By full file path (also accepted):
+bash get-password.sh reports/2026-05-amal-umrah-initial-meeting.html
+
+# List every client + their password:
+bash get-password.sh
+```
+
+The script prints a short, copy-pasteable password. Hand it to the client once; they reuse it for every report we ever send them.
+
+### Sharing rule
+
+- URL and password ALWAYS go via **separate channels** — email for the URL, SMS/WhatsApp for the password (or the reverse). Never both in the same message.
+- Re-tell the client this password each time you send a new report, so they don't have to dig for it.

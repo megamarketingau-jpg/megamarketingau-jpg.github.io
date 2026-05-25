@@ -1,0 +1,26 @@
+# Mega Marketing — client slug registry
+# One slug per line. Used by encrypt.sh + get-password.sh to derive per-client
+# passwords from filenames matching the pattern: YYYY-MM-<slug>-<type>.html
+#
+# Add a new line for every new client. Slug = kebab-case folder name minus the
+# "client-" prefix. Order doesn't matter; the scripts sort by length descending
+# so longer slugs (e.g. selective-support) match before shorter ones (support).
+#
+# Comments start with # and are ignored.
+
+amal-umrah
+darrusallam
+eih-care
+evaguard
+halal-food-melbourne
+hash-home-care
+labor-care
+lynbrook-optical
+mega-marketing
+melbourne-greenworks
+popdone
+selective-support
+sojourn
+top-tier-property
+uniq-cctv
+veiled-stylist
