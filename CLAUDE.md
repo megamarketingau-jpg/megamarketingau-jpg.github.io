@@ -22,7 +22,7 @@ Publish client reports, dashboards, and deliverables for Mega Marketing clients.
 
 ## Naming convention
 Files: `YYYY-MM-[client-slug]-[type].html`
-Example: `2026-05-labor-care-ads-report.html`
+Example: `2026-05-labour-care-ads-report.html`
 
 ## Deploy
 - Push to main → GitHub Actions deploys in ~60 seconds
