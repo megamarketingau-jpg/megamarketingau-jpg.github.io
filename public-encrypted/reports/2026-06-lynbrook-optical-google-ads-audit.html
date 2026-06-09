@@ -500,9 +500,9 @@ ul.check li::before {
       <img src="https://lynbrookoptical.com.au/wp-content/themes/lynbrookoptical/assets/media/logo.png" alt="Lynbrook Optical">
     </div>
     <nav>
-      {{NAV_LINKS}}
+      <a href="#sec-1">Account</a><a href="#sec-2">Findings</a><a href="#sec-4">Action queue</a><a href="#sec-6">Ad copy</a>
     </nav>
-    <a class="cta" href="#next-steps">Next steps</a>
+    <a class="cta" href="#sec-4">Next steps</a>
   </div>
 </header>
 
@@ -511,7 +511,7 @@ ul.check li::before {
 <!-- ============================ HERO ============================ -->
 <section class="hero">
   <div class="hero-inner">
-    <span class="eyebrow">{{REPORT_EYEBROW}}</span>
+    <span class="eyebrow">Google Ads Audit</span>
     <h1>Google Ads Audit & Optimisation</h1>
     <p class="lead">Account 4386584049 · 90-day review</p>
     <div class="meta">
@@ -521,35 +521,39 @@ ul.check li::before {
       <span class="dot">·</span>
       <span>Issued 09/06/2026</span>
     </div>
-    {{HERO_STRIP}}
+    <div class="headline-strip"><div class="cell"><div class="v">$2,226</div><div class="l">90-day spend</div></div><div class="cell"><div class="v">60</div><div class="l">Conversions</div></div><div class="cell"><div class="v">~$37</div><div class="l">Blended CPA</div></div><div class="cell"><div class="v">2 / 51</div><div class="l">Campaigns live</div></div></div>
   </div>
 </section>
 
 <!-- ============================ REPORT BODY ============================ -->
 <main>
-  <section>
+  <section class="section">
+<div class="section-inner">
 <p><strong>Prepared:</strong> 09/06/2026 (AEST) · <strong>Account:</strong> Lynbrook Optical — Google Ads <code>4386584049</code> (AUD, Australia/Sydney) under MCC <code>2941491949</code></p>
 <p><strong>Data window:</strong> Last 90 days (11/03/2026 – 09/06/2026) + Last 30 days, pulled live via the Google Ads API · all figures the Google Ads API-sourced</p>
 <p><strong>Benchmark framework:</strong> <code>_shared/team-guides/google-ads-for-lead-gen.md</code> + 2026 best practice</p>
 <p><strong>Keyword market data:</strong> Google keyword market data (AU national, 09/06/2026) — now unblocked (was unavailable at last research run)</p>
 <p><strong>Archetype:</strong> Search-Heavy local service (single clinic, Lynbrook VIC) — local intent is the demand; PMax/Demand Gen are secondary</p>
 <div class="callout"><strong>Conflict-of-interest note:</strong> Amin is owner, optometrist, and the marketing client. This report is written to the account's interest. Paid ads are managed by Aqsa — recommendations here are for her execution queue.</div>
-</section>
-<section>
-<span class="section-tag">§0</span>
+</div></section>
+<section class="section alt" id="sec-0">
+<div class="section-inner">
+<span class="eyebrow">Summary</span>
 <h2>0. Verdict in one paragraph</h2>
 <p>The account is doing <strong>~$700/month</strong> of real spend through just <strong>two truly-live engines — a Performance Max campaign (69% of spend) and a Brand Search campaign (30%)</strong> — sitting on top of a graveyard of <strong>49 paused/removed/ended campaigns</strong> built up over ~4 years. Blended cost-per-conversion is <strong>~$37</strong>, which for a clinic whose first-visit value is ≥$370 (and recurring) is <em>economically fine</em>. The problem is not the headline CPA — it's that <strong>the most expensive cost-per-conversion in the entire account is your own brand name</strong> (~$48), because the Brand campaign is on the one bidding strategy the playbook explicitly forbids for brand. You are <strong>overpaying ~3.2× for clicks on "lynbrook optical"</strong>, letting <strong>PMax serve on your own brand unchecked</strong> (its brand exclusion points at Specsavers, not you), optimising bids toward <strong>lead actions that aren't actually booked appointments</strong>, and <strong>capturing zero controlled Search presence</strong> on the high-intent non-brand terms ("optometrist near me", "eye test near me") that are the real 40→60-appointments lever. Fixing the bidding + structure is low-risk and mostly free; building the missing high-intent Search layer is the growth move.</p>
-</section>
-<section>
-<span class="section-tag">§1</span>
+</div></section>
+<section class="section" id="sec-1">
+<div class="section-inner">
+<span class="eyebrow">Part 1</span>
 <h2>1. What's actually live (the 2-of-51 reality)</h2>
 <p>Only <strong>two</strong> campaigns are actually serving. Two others read <code>status = ENABLED</code> but have <strong>past end-dates</strong>, so they show <code>serving_status = ENDED</code> and spend nothing — they are <em>not</em> live (verified via <code>campaign.primary_status</code> / <code>serving_status</code>, 09/06/2026).</p>
 <div class="table-wrap"><table><thead><tr><th>Campaign</th><th>Type</th><th>Bidding</th><th>Serving status</th><th>90d Spend</th><th>90d Conv</th><th>CPA</th><th>Notes</th></tr></thead><tbody><tr><td>WD \</td><td>PMAX - Optimising</td><td>Performance Max</td><td>Max Conv, <strong>tCPA $40</strong></td><td><strong>SERVING</strong> (primary: <strong>LIMITED</strong>)</td><td><strong>$1,528.20</strong></td><td>44</td><td><strong>$34.73</strong></td><td>69% of spend. Budget-constrained + an asset group <strong>limited by policy</strong>.</td></tr><tr><td>WD \</td><td>SN - Brand Campaign</td><td>Search</td><td><strong>Maximize Conversions</strong> ⚠️</td><td><strong>SERVING</strong> (ELIGIBLE)</td><td><strong>$671.17</strong></td><td>14</td><td><strong>$47.94</strong></td><td>Brand on smart bidding — the core problem.</td></tr><tr><td>WD \</td><td>SN - Brand Campaign Manual CPC</td><td>Search</td><td>Manual CPC</td><td><strong>ENDED</strong> (ENABLED but past end-date)</td><td>$20.22</td><td>2</td><td>$10.11</td><td>Not live. Served earlier in window — it's the <em>proof</em> a manual brand click costs $1.68.</td></tr><tr><td>Website traffic - Exp.</td><td>Search</td><td>Maximize Clicks</td><td><strong>ENDED</strong> (ENABLED but past end-date)</td><td>$0</td><td>0</td><td>—</td><td>Not live. 444 legacy keywords + a deprecated ETA — clean up, don't fear.</td></tr><tr><td><em>47 others</em></td><td>mixed</td><td>—</td><td>PAUSED/REMOVED</td><td>$0</td><td>—</td><td>DEV/CP/WD test clutter, 2022–2025.</td></tr></tbody></table></div>
 <p><strong>90-day account totals:</strong> 14,084 impressions · 540 clicks · <strong>$2,226.48 spend</strong> · 60 conversions · 3.83% CTR · $4.12 avg CPC.</p>
 <p><strong>30-day:</strong> $701.92 spend · ~20 conversions · ~$35 CPA. Real pacing ≈ $24/day, all of it PMax + the Brand Max-Conv campaign.</p>
-</section>
-<section>
-<span class="section-tag">§2</span>
+</div></section>
+<section class="section alt" id="sec-2">
+<div class="section-inner">
+<span class="eyebrow">Part 2</span>
 <h2>2. Findings, ranked by money + risk</h2>
 <h3>🔴 P0 — Stop the bleed (this week, low-risk, mostly free)</h3>
 <p><strong>F1. Brand Search is on Maximize Conversions — you're paying 3.2× for your own name.</strong></p>
@@ -592,9 +596,10 @@ ul.check li::before {
 <p>The 47 paused/removed campaigns (DEV-, CP_, WD | …, dated 2022–2025) make navigation and optimisation slow and inflate the conversion-action list (58 actions, ~46 removed). Archive aggressively; keep only what's live + a clean "Paused — reusable" set.</p>
 <p><strong>F13. PMax asset groups — 2 live, 2 paused; plus a policy-limited asset.</strong></p>
 <p>Live: "Pediatric Eye Care" + "Optometrist | Eye Tests" (both strong, 6–8 images / 3 logos / 40–50 videos each — well-stocked). Paused: "Eye Wear + Prescription Glasses" (POOR — underpopulated) + "$50 Off / donate-glasses" (a genuinely good community angle, sitting idle). PMax's <code>primary_status</code> is <strong>LIMITED</strong> — <em>budget-constrained</em> <strong>and</strong> <code>HAS_ASSET_GROUPS_LIMITED_BY_POLICY</code> (one or more assets disapproved — likely the comparative-claim copy in §6). With 65% of impressions lost to <strong>rank</strong> (IS only 18%), there's real headroom: resolve the policy strike, rebuild the eyewear asset group to EXCELLENT, and reactivate the $50/community group.</p>
-</section>
-<section>
-<span class="section-tag">§3</span>
+</div></section>
+<section class="section" id="sec-3">
+<div class="section-inner">
+<span class="eyebrow">Part 3</span>
 <h2>3. Optimisation plan, mapped to the playbook's 8-section output</h2>
 <p><strong>1. Campaign architecture (5 types):</strong></p>
 <div class="table-wrap"><table><thead><tr><th>Type</th><th>Decision</th><th>Action</th></tr></thead><tbody><tr><td>Branded Search</td><td><strong>Fix now</strong></td><td>One campaign, Manual CPC. Pause the Max-Conv twin.</td></tr><tr><td>High-Intent Search</td><td><strong>Launch (month 1)</strong></td><td>Build it — biggest gap. Themes per F8.</td></tr><tr><td>Competitor Search</td><td><strong>Month 2–3 (selective)</strong></td><td>You already have competitor negative lists + a "DEV - Competitors" template; revive selectively, capped, tightly negatived.</td></tr><tr><td>Performance Max</td><td><strong>Keep + fix</strong></td><td>Add own-brand exclusion, rebuild eyewear asset group, re-gate to booked-appointment conversion.</td></tr><tr><td>Demand Gen</td><td><strong>Skip for now</strong></td><td>Search-Heavy local — not warranted until Search + PMax are clean &amp; profitable.</td></tr></tbody></table></div>
@@ -605,16 +610,18 @@ ul.check li::before {
 <p><strong>6. Branded vs non-branded split:</strong> Enforce — strip generic ad groups out of Brand (F9).</p>
 <p><strong>7. Archetype weighting:</strong> Search-Heavy → full Search structure is the priority; PMax stays ~30% support, not the whole account.</p>
 <p><strong>8. PMax launch gate:</strong> You're <em>past</em> launch, so the gate becomes a <em>hygiene</em> gate — own-brand Excluded-Brands list ON (F4), booked-appointment as the optimisation goal (F6), all asset groups EXCELLENT (F13).</p>
-</section>
-<section>
-<span class="section-tag">§4</span>
+</div></section>
+<section class="section alt" id="sec-4">
+<div class="section-inner">
+<span class="eyebrow">Part 4</span>
 <h2>4. The 7-day action queue (for Aqsa)</h2>
 <ol><li><strong>Brand:</strong> switch the <strong>live</strong> "WD | SN - Brand Campaign" from Maximize Conversions → <strong>Manual CPC</strong> (or Max Conv + CPC cap ~$2). <em>(F1, F2, F3)</em></li><li><strong>PMax:</strong> add <strong>Lynbrook Optical</strong> (own brand) to the PMax brand exclusion (keep Specsavers too). <em>(F4)</em></li><li><strong>Conversions:</strong> make the <strong>GHL booked-appointment</strong> primary + counted; <strong>set its conversion value to $90</strong>; demote soft actions (form-start, GA4 clicks) to secondary; retire the legacy Smart-campaign call actions. <em>(F6, F7)</em></li><li><strong>Ad copy compliance scrub:</strong> pull the AHPRA-risk lines now live — <strong>"Best Eye Clinic in Lynbrook", "Best Price Guarantee"/"Price Beat Guarantee", "Specialise in Kids", "30 Days Money Back Guarantee", "Trusted by 1000s"</strong> — and unify ratings to the canonical <strong>4.9★ / 207 reviews</strong>; fix typos ("We Offers", "Warrantry", "Guarante"). <em>Hold all $-offer creative until the <code>/special-offers/terms</code> page exists (open P1 blocker).</em> <em>(F11 + §6)</em></li><li><strong>Archive</strong> the two ENABLED-but-ENDED campaigns; harvest their keyword themes for F8. <em>(F5)</em></li></ol>
 <p><strong>Then (weeks 2–4):</strong> build the High-Intent Search campaign (F8) with deep-linked booking LPs · ship the rewritten RSAs from §6 · build the account master negative list (F10) · rebuild + reactivate the PMax eyewear asset group (F13) · resolve the PMax policy-limited asset group · archive the remaining dead campaigns (F12).</p>
 <p><strong>Expected effect:</strong> brand CPC ↓ ~70% (frees ~$1,800/yr), brand IS → ~95%, bidding aligned to real bookings, and a controlled high-intent Search layer opening the path from ~40 to 60 weekly appointments without raising total budget materially.</p>
-</section>
-<section>
-<span class="section-tag">§6</span>
+</div></section>
+<section class="section" id="sec-6">
+<div class="section-inner">
+<span class="eyebrow">Part 6</span>
 <h2>6. Ad copy &amp; creative audit + rewrites</h2>
 <p>Full review of every <strong>live</strong> ad asset (4 Brand RSAs across ad groups Brand/Optometrist/Clinic + 2 live PMax asset groups + the callout/sitelink/snippet library), benchmarked against <code>brandguide.md</code> voice ("local, friendly, professional") + §14 AHPRA advertising rules + the competitor angles scraped this session.</p>
 <h3>6.1 What's strong (keep + scale)</h3>
@@ -646,12 +653,13 @@ ul.check li::before {
 <p>Descriptions: <code>Myopia control for children in Lynbrook — help slow short-sightedness. Book a consultation.</code> · <code>Is your child's short-sightedness getting worse? Ask about myopia management. Book today.</code> · <code>Caring local optometrist offering myopia control for kids. Book online or call (03) 9702 9118.</code> · <code>Rated 4.9★ by 207 families. Myopia management &amp; children's eye tests in Lynbrook.</code></p>
 <h3>6.5 Extension fixes</h3>
 <ul><li><strong>Callouts:</strong> remove "Best Price Guarantee", "100%Customer Satisfaction", "Lifetime Service Guarante". Replace with: <code>Bulk-Billed Eye Tests<em></code> · <code>Open 6 Days</code> · <code>Glasses From $199</em></code> · <code>50% Off 2nd Pair*</code> · <code>Kids' Eye Tests Welcome</code> · <code>All Health Funds</code> · <code>Designer &amp; Everyday Frames</code> · <code>Online Booking</code> · <code>4.9★ Google Reviews</code> · <code>Lynbrook Village</code>.</li><li><strong>Sitelinks:</strong> fix "2yr Warrantry Offer" → "2-Year Kids' Frame Warranty"; ensure "Special Offers" sitelink points to a <code>/special-offers/</code> page that carries the T&amp;Cs (gated on that page existing). Deep-link Eye Tests / Kids' Vision / Contact Lenses / Book Online.</li><li><strong>Structured snippets:</strong> Service catalog (Eye Exam · Paediatric Eye Care · Contact Lens · Vision Reports) is fine — keep.</li><li><strong>Call extension:</strong> (03) 9702 9118 confirmed canonical — keep.</li><li><strong>Disclaimer discipline (account-wide):</strong> every <code><em></code> price/bulk-bill claim needs the visible "</em>Bulk billing for eligible Medicare card holders. T&amp;Cs apply." line — mirror the EyeQ/Oscar Wylee pattern. This also clears the likely PMax policy strike (F13).</li></ul>
-</section>
-<section>
-<span class="section-tag">§7</span>
+</div></section>
+<section class="section alt" id="sec-7">
+<div class="section-inner">
+<span class="eyebrow">Part 7</span>
 <h2>7. Sources &amp; integrity</h2>
 <ul><li>All performance, structure, bidding, IS, device, conversion-action, extension and PMax figures: <strong>the Google Ads API</strong>, account <code>4386584049</code>, pulled 09/06/2026, window 11/03–09/06/2026 (90d) + last 30d.</li><li>Keyword volume / CPC / competition / top-of-page bids: <strong>Google keyword market data, location AU (2036), 09/06/2026</strong> — national volumes (local slice is smaller; intent + CPC + competition are the transferable signal). Flagged because last research run (25/05/2026) had third-party keyword data unavailable.</li><li>Live ad copy (Brand RSAs + PMax asset-group text + extensions): <strong>the Google Ads API</strong>, pulled 09/06/2026 — every quoted line in §6 is verbatim from the serving account.</li><li>Competitor ad angles: <strong>the Meta Ad Library</strong>.json`. Competitor Google Search ads attempted via <strong>a third-party SERP check</strong> (4 money keywords, Melbourne) → no ads served to the crawler; not reported rather than fabricated.</li><li>Serving status verified via <code>campaign.primary_status</code> / <code>serving_status</code> (not <code>campaign.status</code>) — corrects an earlier draft that read 4 campaigns as live; only 2 serve.</li><li>No metric in this report is estimated except where explicitly labelled "Estimated" (F1 brand-waste calc). F7 conversion value ($90) is an owner-supplied decision (09/06/2026).</li><li>Compliance references: brandguide.md §14 + open P1 blockers (AHPRA registration, PI insurer, /privacy/, /special-offers/terms). All rewritten copy in §6 is drafted to §14; <code>*</code>-marked offer lines stay paused until the <code>/special-offers/terms</code> page is live.</li></ul>
-</section>
+</div></section>
 </main>
 
 <!-- ============================ FOOTER ============================ -->
@@ -664,7 +672,7 @@ ul.check li::before {
     <div>
       <h5>This report</h5>
       <ul>
-        {{FOOTER_NAV_LINKS}}
+        <li><a href="#sec-2">Findings</a></li><li><a href="#sec-3">Optimisation plan</a></li><li><a href="#sec-4">Action queue</a></li><li><a href="#sec-6">Ad copy &amp; rewrites</a></li>
       </ul>
     </div>
     <div>
@@ -672,13 +680,13 @@ ul.check li::before {
       <ul>
         <li><a href="https://megamarketing.com.au">megamarketing.com.au</a></li>
         <li><a href="https://megamarketing.com.au/portfolio">Portfolio</a></li>
-        <li><a href="https://link.megamarketing.com.au/widget/booking/K9UqeXX37jyeSguz6SuN?utm_source=client-report&amp;utm_medium=report-footer&amp;utm_campaign={{CLIENT_SLUG}}&amp;utm_content={{REPORT_TYPE}}">Book a call</a></li>
+        <li><a href="https://link.megamarketing.com.au/widget/booking/K9UqeXX37jyeSguz6SuN?utm_source=client-report&amp;utm_medium=report-footer&amp;utm_campaign=lynbrook-optical&amp;utm_content=google-ads-audit">Book a call</a></li>
         <li><a href="mailto:hello@megamarketing.com.au">hello@megamarketing.com.au</a></li>
       </ul>
     </div>
   </div>
   <div class="bottom">
-    <div class="left">© {{REPORT_YEAR}} MEGA Marketing · Confidential — for Lynbrook Optical use only</div>
+    <div class="left">© 2026 MEGA Marketing · Confidential — for Lynbrook Optical use only</div>
     <div class="right">
       Generated 09/06/2026
       <a href="https://megamarketing.com.au">megamarketing.com.au</a>
