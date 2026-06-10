@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meta Ads Audit & Optimisation — Melbourne GreenWorks</title>
+<meta name="generator" content="MEGA Marketing report system">
+<style>
+  :root {
+    --client-name: "Melbourne GreenWorks";
+    --client-primary: #fe5e13;
+    --client-secondary: #061257;
+    --client-accent: #061257;
+    --client-logo: url('https://melbournegreenworks.com.au/melbournegreenworks-logo.png');
+  }
+  /* ===================================================================
+   MEGA Marketing × Client co-branded report stylesheet
+   Webpage-style — modelled on megamarketing.com.au.
+   Conforms to: _shared/canonical-ownership.md v1.0
+   ===================================================================
+   Required CSS variables (renderer injects these into :root BEFORE this loads,
+   pulled from client-<slug>/brandguide.md §6):
+
+     --client-name        e.g. "Lynbrook Optical"
+     --client-primary     e.g. #1B3A5C   (used for buttons, links, accents)
+     --client-secondary   e.g. #C9A65A   (headings dark / hero text)
+     --client-accent      e.g. #E2B341   (highlights, hover, emoji bg)
+     --client-logo        e.g. url(...)  (top-left nav)
+   =================================================================== */
+
+:root {
+  /* MEGA agency colours — fixed, never overridden */
+  --mega-primary: #0E3F56;
+  --mega-cyan: #2BC8DD;
+  --mega-green: #2BDD99;
+
+  /* Neutral palette (megamarketing.com.au feel) */
+  --ink: #1a1a1a;
+  --ink-soft: #444;
+  --muted: #6b7280;
+  --rule: #e5e7eb;
+  --paper: #ffffff;
+  --soft: #f8fafc;
+  --softer: #f3f4f6;
+
+  /* Client fallbacks — overridden per-render */
+  --client-name: "Client";
+  --client-primary: var(--mega-primary);
+  --client-secondary: var(--ink);
+  --client-accent: var(--mega-cyan);
+  --client-logo: url('https://reports.megamarketing.com.au/public/assets/mega/mega-primary-logo.png');
+
+  /* Derived state colours (soft tints) */
+  --client-primary-soft: color-mix(in srgb, var(--client-primary) 8%, white);
+  --client-accent-soft: color-mix(in srgb, var(--client-accent) 14%, white);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--client-primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* -- Typography ------------------------------------------------------ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: 48px; font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-size: 32px; }
+h3 { font-size: 20px; }
+h4 { font-size: 18px; }
+p  { margin: 0 0 16px; }
+strong { color: var(--ink); font-weight: 600; }
+.lead { font-size: 18px; color: var(--muted); line-height: 1.65; }
+
+/* -- Top navigation -------------------------------------------------- */
+
+.topnav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+.topnav-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 32px;
+}
+/* Client brand block is NON-clickable by design — it's identity, not navigation.
+   Always wrap in <div class="brand">, never <a>. */
+.topnav .brand {
+  display: flex; align-items: center;
+}
+.topnav .brand img {
+  height: 40px;
+  max-width: 200px;
+  object-fit: contain;
+  display: block;
+}
+.topnav nav {
+  display: flex; align-items: center; gap: 24px;
+}
+.topnav nav a {
+  font-size: 14px; font-weight: 500;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.topnav nav a:hover { color: var(--client-primary); text-decoration: none; }
+.topnav .cta {
+  background: var(--client-primary);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px; font-weight: 600;
+}
+.topnav .cta:hover { filter: brightness(0.92); text-decoration: none; }
+
+/* Mobile: hide section nav links, keep logo + cta */
+@media (max-width: 720px) {
+  .topnav nav { display: none; }
+  .topnav .cta { padding: 8px 14px; font-size: 13px; }
+}
+
+/* -- Hero ------------------------------------------------------------ */
+
+.hero {
+  padding: 80px 32px 64px;
+  background: linear-gradient(180deg, var(--paper) 0%, var(--soft) 100%);
+}
+.hero-inner {
+  max-width: 1180px; margin: 0 auto;
+  text-align: center;
+}
+.hero .eyebrow {
+  display: inline-block;
+  background: var(--client-accent-soft);
+  color: var(--client-primary);
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-size: 56px;
+  max-width: 800px;
+  margin: 0 auto 18px;
+  color: var(--ink);
+}
+.hero .lead {
+  max-width: 640px;
+  margin: 0 auto 32px;
+}
+.hero .meta {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 13px; color: var(--muted);
+  font-weight: 500;
+}
+.hero .meta .dot { color: var(--rule); }
+
+/* Headline KPI strip (optional, sits below hero text) */
+.headline-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 1080px;
+  margin: 40px auto 0;
+}
+.headline-strip .cell {
+  background: var(--paper);
+  padding: 24px 20px;
+  text-align: center;
+}
+.headline-strip .cell .v {
+  font-size: 32px; font-weight: 700; color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.headline-strip .cell .l {
+  font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); margin-top: 4px;
+}
+@media (max-width: 720px) {
+  .hero h1 { font-size: 36px; }
+  .hero { padding: 48px 24px 32px; }
+  .headline-strip { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* -- Section structure ---------------------------------------------- */
+
+.section {
+  padding: 80px 32px;
+  background: var(--paper);
+}
+.section.alt { background: var(--soft); }
+.section-inner { max-width: 1080px; margin: 0 auto; }
+
+.section .eyebrow {
+  display: inline-block;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--client-primary);
+  margin-bottom: 12px;
+}
+.section h2 {
+  font-size: 36px;
+  max-width: 720px;
+  margin-bottom: 20px;
+}
+.section h2.center { margin-left: auto; margin-right: auto; text-align: center; }
+.section .lead.center { text-align: center; margin-left: auto; margin-right: auto; }
+
+@media (max-width: 720px) {
+  .section { padding: 56px 24px; }
+  .section h2 { font-size: 28px; }
+}
+
+/* -- Feature cards (with emoji icons) ------------------------------ */
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  margin-top: 40px;
+}
+.feature {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 32px 28px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.feature:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+  border-color: var(--client-primary);
+}
+.feature .emoji {
+  font-size: 36px;
+  line-height: 1;
+  margin-bottom: 16px;
+  display: block;
+}
+.feature h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.feature p {
+  font-size: 14px; color: var(--muted);
+  margin: 0;
+}
+.feature .meta {
+  font-size: 13px; color: var(--client-primary);
+  font-weight: 600; margin-top: 12px;
+}
+
+/* -- KPI cards (number-led variant) ---------------------------------- */
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 32px 0;
+}
+.kpi {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 24px;
+}
+.kpi .label {
+  font-size: 11px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--muted);
+}
+.kpi .value {
+  font-size: 36px; font-weight: 700;
+  color: var(--ink); margin: 8px 0 4px;
+  letter-spacing: -0.02em;
+}
+.kpi .delta { font-size: 13px; color: var(--muted); font-weight: 500; }
+.kpi .delta.up { color: #15803D; }
+.kpi .delta.down { color: #DC2626; }
+
+/* -- Two-column comparison (like Traditional vs Simple Sites) ------- */
+
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-top: 40px;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.compare > div { padding: 32px 28px; }
+.compare .left { background: var(--softer); }
+.compare .right { background: var(--client-primary-soft); border-left: 1px solid var(--rule); }
+.compare h3 { font-size: 18px; margin-bottom: 18px; }
+.compare ul { list-style: none; padding: 0; margin: 0; }
+.compare li { padding: 8px 0 8px 28px; position: relative; font-size: 14px; color: var(--ink-soft); }
+.compare .left li::before { content: '✕'; color: #DC2626; position: absolute; left: 0; font-weight: 700; }
+.compare .right li::before { content: '✓'; color: #15803D; position: absolute; left: 0; font-weight: 700; }
+@media (max-width: 720px) {
+  .compare { grid-template-columns: 1fr; }
+  .compare .right { border-left: 0; border-top: 1px solid var(--rule); }
+}
+
+/* -- Tables ---------------------------------------------------------- */
+
+.table-wrap {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 24px 0;
+}
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th {
+  background: var(--soft);
+  font-weight: 600; font-size: 12px;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--muted);
+}
+tr:last-child td { border-bottom: 0; }
+tr.total td { background: var(--soft); font-weight: 600; color: var(--ink); }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* -- Callouts -------------------------------------------------------- */
+
+.callout {
+  background: var(--client-accent-soft);
+  border-left: 4px solid var(--client-accent);
+  border-radius: 0 8px 8px 0;
+  padding: 18px 22px;
+  margin: 24px 0;
+  font-size: 14px; line-height: 1.6;
+  color: var(--ink-soft);
+}
+.callout.warn { background: #FEF3C7; border-left-color: #F59E0B; }
+.callout.good { background: #D1FAE5; border-left-color: #10B981; }
+.callout strong { color: var(--ink); }
+
+/* -- Lists with emoji bullets -------------------------------------- */
+
+ul.emoji-list { list-style: none; padding: 0; margin: 16px 0; }
+ul.emoji-list li {
+  position: relative;
+  padding: 6px 0 6px 32px;
+  font-size: 15px; color: var(--ink-soft);
+}
+ul.emoji-list li::before {
+  content: attr(data-emoji);
+  position: absolute; left: 0; top: 4px;
+  font-size: 18px;
+}
+
+ul.check { list-style: none; padding: 0; margin: 12px 0; }
+ul.check li {
+  position: relative; padding: 6px 0 6px 28px;
+  font-size: 15px; color: var(--ink-soft);
+}
+ul.check li::before {
+  content: '✓'; position: absolute; left: 0;
+  color: var(--client-primary); font-weight: 700;
+}
+
+/* -- Asset / image cards (clickable to Drive) ----------------------- */
+
+.asset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 32px;
+  align-items: start;
+}
+.asset-card {
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--paper);
+  text-decoration: none; color: inherit;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.asset-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  text-decoration: none;
+}
+/* Asset images render at their NATURAL aspect ratio — never cropped.
+   Mixed 1:1 / 4:5 / 9:16 cards in one grid will have different heights;
+   align-items: start on .asset-grid makes that look intentional. */
+.asset-card img { width: 100%; height: auto; display: block; background: var(--soft); }
+.asset-card .meta { padding: 14px 18px; }
+.asset-card .meta .title { font-weight: 600; color: var(--ink); margin-bottom: 4px; font-size: 14px; }
+.asset-card .meta .sub { font-size: 12px; color: var(--muted); }
+.asset-card .meta .open { font-size: 12px; color: var(--client-primary); font-weight: 600; margin-top: 8px; }
+.asset-card .meta .open::after { content: ' ↗'; }
+
+/* -- Tags ------------------------------------------------------------ */
+
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.5px;
+  background: var(--softer); color: var(--ink-soft);
+  margin-right: 4px;
+}
+.tag.win { background: #D1FAE5; color: #065F46; }
+.tag.warn { background: #FEF3C7; color: #92400E; }
+.tag.fail { background: #FEE2E2; color: #991B1B; }
+.tag.brand { background: var(--client-accent-soft); color: var(--client-primary); }
+
+/* -- Footer (dark, like megamarketing.com.au) ---------------------- */
+
+.site-footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding: 56px 32px 32px;
+}
+.site-footer-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.site-footer .brand-block { max-width: 360px; }
+.site-footer .brand-block img { height: 52px; margin-bottom: 20px; }
+.site-footer .brand-block p { font-size: 13px; color: #94a3b8; line-height: 1.6; margin: 0; }
+.site-footer h5 {
+  color: #fff; font-size: 12px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px;
+}
+.site-footer ul { list-style: none; padding: 0; margin: 0; }
+.site-footer ul li { margin: 8px 0; }
+.site-footer ul li a { font-size: 13px; color: #cbd5e1; text-decoration: none; }
+.site-footer ul li a:hover { color: #fff; text-decoration: underline; }
+
+.site-footer .bottom {
+  max-width: 1180px;
+  margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid #1e293b;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; color: #64748b;
+}
+.site-footer .bottom .right a { color: #cbd5e1; margin-left: 16px; }
+
+@media (max-width: 720px) {
+  .site-footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .site-footer .bottom { flex-direction: column; gap: 8px; }
+}
+
+/* -- Print niceties (PDF export) ----------------------------------- */
+
+@media print {
+  .topnav { position: static; }
+  .topnav .cta, .topnav nav a { display: none; }
+  .section { padding: 24px 0; page-break-inside: avoid; }
+  .feature:hover, .asset-card:hover { transform: none; box-shadow: none; }
+}
+
+  
+</style>
+</head>
+<body>
+
+<!-- ============================ TOP NAV ============================ -->
+<header class="topnav">
+  <div class="topnav-inner">
+    <div class="brand">
+      <!-- Client logo: identity, not navigation. Never wrap in <a>. -->
+      <img src="https://melbournegreenworks.com.au/melbournegreenworks-logo.png" alt="Melbourne GreenWorks">
+    </div>
+    <nav>
+      <a href="#sec-1">Verdict</a><a href="#sec-3">Performance</a><a href="#sec-4">Findings</a><a href="#sec-5">Action queue</a>
+    </nav>
+    <a class="cta" href="#sec-5">Next steps</a>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- ============================ HERO ============================ -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Meta Ads Audit</span>
+    <h1>Meta Ads Audit & Optimisation</h1>
+    <p class="lead">Account act_2325048994648859 · first-month review</p>
+    <div class="meta">
+      <span>Melbourne GreenWorks</span>
+      <span class="dot">·</span>
+      <span>06/05–10/06/2026</span>
+      <span class="dot">·</span>
+      <span>Issued 10/06/2026</span>
+    </div>
+    <div class="headline-strip"><div class="cell"><div class="v">$810</div><div class="l">Spend · 35 days</div></div><div class="cell"><div class="v">~11</div><div class="l">Lead actions</div></div><div class="cell"><div class="v">1 / 5</div><div class="l">Campaigns live</div></div><div class="cell"><div class="v">3.46</div><div class="l">Peak frequency</div></div></div>
+  </div>
+</section>
+
+<!-- ============================ REPORT BODY ============================ -->
+<main>
+  <section class="section">
+<div class="section-inner">
+<p><strong>Account:</strong> Melbourne Greenworks (<code>act_2325048994648859</code>) · AUD · Australia/Melbourne · standalone</p>
+<p><strong>Account age:</strong> 35 days · lifetime spend <strong>$810</strong> · balance $53.57</p>
+<p><strong>Review:</strong> lifetime (account first ran 06/05/2026) · prepared 10/06/2026</p>
+<p><strong>Read-only audit</strong> — no changes made to the account · brand compliance per <code>brandguide.md</code> (audited 29/05/2026)</p>
+</div></section>
+<section class="section alt" id="sec-1">
+<div class="section-inner">
+<span class="eyebrow">Part 1</span>
+<h2>1. Verdict</h2>
+<p>In 35 days the account spent <strong>$810</strong> and produced roughly <strong>9–11 lead actions</strong> (website form submits + Meta "contact" events), of which only <strong>~3 are confirmed form submissions</strong> — a blended cost of <strong>$75–90 per lead action</strong>, or closer to <strong>$270 per actual form submit</strong>. The measurement backbone is genuinely good for a young account: the Pixel is installed and firing, three custom conversions (landscaping / NDIS / maintenance form submits) are defined, and six retargeting audiences are built. But the account is being run in a way that guarantees it never learns. The <strong>only live campaign right now is an Engagement campaign, not a Leads campaign</strong> — the two purpose-built Leads campaigns are paused. Budget is <strong>$10/day split across 3 ad sets and 17 ads</strong>, so no ad set ever reaches the conversion volume Meta needs to exit the learning phase. And there is a concrete setup bug: <strong>every ad set's radius target is pointed at "Box Hill, New South Wales" — the Sydney suburb — not Box Hill, Victoria</strong>, so a slice of budget is being delivered to the wrong state.</p>
+<p><strong>Net:</strong> decent plumbing, wrong wiring. The fixes are structural, not creative: run a single Leads campaign (not Engagement), fix the NSW geo, consolidate budget so an ad set can actually learn, and switch on the retargeting audiences that are already built and sitting idle. Same instinct-level problems as the Google account — spin-up / pause churn and budget spread too thin to compound.</p>
+</div></section>
+<section class="section" id="sec-2">
+<div class="section-inner">
+<span class="eyebrow">Part 2</span>
+<h2>2. Scorecard</h2>
+<div class="table-wrap"><table><thead><tr><th>#</th><th>Dimension</th><th>Rating</th><th>Note</th></tr></thead><tbody><tr><td>1</td><td>Account structure</td><td>🔴 Poor</td><td>5 date-stamped campaigns in 35 days; spin-up/pause churn; ad-set-level budgets, no consolidation</td></tr><tr><td>2</td><td>Objective fit</td><td>🔴 Poor</td><td>Only ACTIVE campaign is <strong>Engagement</strong>; both purpose-built <strong>Leads</strong> campaigns are paused</td></tr><tr><td>3</td><td>Conversion setup</td><td>🟢 Good</td><td>Ad sets optimise for Offsite Conversions; 3 custom conversions (landscaping/NDIS/maintenance form) defined</td></tr><tr><td>4</td><td>Pixel + events</td><td>🟢 Good</td><td>Pixel live since 28/04, fired today; custom events wired. CAPI/server-side not confirmed</td></tr><tr><td>5</td><td>Geo targeting</td><td>🔴 Bug</td><td>City radius target = <strong>Box Hill, NSW</strong> (Sydney), not Box Hill VIC — budget leaks interstate</td></tr><tr><td>6</td><td>Audience strategy</td><td>🟡 Weak</td><td>Narrow (5 neighbourhoods) + Advantage Audience on; no exclusions; frequency climbing</td></tr><tr><td>7</td><td>Retargeting + lookalikes</td><td>🔴 Idle</td><td>6 retargeting audiences <strong>built but used in zero campaigns</strong>; no lookalikes; no CRM list</td></tr><tr><td>8</td><td>Budget + learning phase</td><td>🔴 Poor</td><td>$10/day ÷ 3 ad sets ÷ 17 ads — no ad set ever exits learning; frequency to 3.46</td></tr><tr><td>9</td><td>Creative volume/mix</td><td>🟡 Mixed</td><td>17 ads in the live campaign (too many for the budget); mostly image, 1 video</td></tr><tr><td>10</td><td>Creative angles + compliance</td><td>🟢 OK</td><td>On-brand service angles; ratings now confirmed accurate; watch NDIS provider wording</td></tr><tr><td>11</td><td>Bid strategy</td><td>🟡 Weak</td><td>Lowest-cost no-cap everywhere; no cost/bid cap; no CBO/Advantage+ budget</td></tr><tr><td>12</td><td>Conversion location</td><td>🟢 OK</td><td>Website form submits to dedicated offer pages; Instant Forms not tested</td></tr></tbody></table></div>
+</div></section>
+<section class="section alt" id="sec-3">
+<div class="section-inner">
+<span class="eyebrow">Part 3</span>
+<h2>3. Performance — the account so far</h2>
+<p>Lifetime figures from the account. "Lead actions" = Meta-counted website contacts + form submits + leads. These are platform-reported and <strong>not yet reconciled against real enquiries in the CRM</strong> — treat as directional.</p>
+<div class="table-wrap"><table><thead><tr><th>Campaign</th><th>Objective</th><th>Status now</th><th>Spend</th><th>Impr.</th><th>CTR</th><th>Freq.</th><th>Lead actions*</th></tr></thead><tbody><tr><td>15-May • Leads</td><td>LEADS</td><td>⏸ Paused</td><td>$348.13</td><td>13,839</td><td>2.82%</td><td>2.77</td><td>~5</td></tr><tr><td>29-May • Engagement</td><td>ENGAGEMENT</td><td>🟢 <strong>Active</strong></td><td>$194.03</td><td>5,927</td><td>2.51%</td><td>1.86</td><td>~4</td></tr><tr><td>25-May • Leads — Optimized</td><td>LEADS</td><td>⏸ Paused</td><td>$171.20</td><td>8,455</td><td>2.73%</td><td><strong>3.46</strong></td><td>~2</td></tr><tr><td>07-May • Engagement</td><td>ENGAGEMENT</td><td>⏸ Paused</td><td>$109.86</td><td>5,808</td><td>3.63%</td><td>1.53</td><td>0</td></tr><tr><td><strong>Total</strong></td><td></td><td></td><td><strong>~$823</strong></td><td>34,029</td><td>—</td><td>—</td><td><strong>~11</strong></td></tr></tbody></table></div>
+<p>\<em> Confirmed </em>form submissions* across all of it ≈ 3 (1 landscaping, 1 NDIS, 1 maintenance) plus ~6 "website contact" events and 1 call. CPL is therefore <strong>~$75/lead action</strong> on the loosest definition and <strong>~$270/form submit</strong> on the strictest.</p>
+<p>Reading it:</p>
+<ul><li><strong>The live campaign is the wrong type.</strong> "29-May Engagement Campaign" ($194 spent, $10/day) is an <em>Engagement</em> objective. Engagement optimises delivery toward people likely to react/comment cheaply, not convert. The two <em>Leads</em> campaigns — which is what you actually want — are both paused.</li><li><strong>Frequency is climbing fast</strong> (3.46 on the 25-May campaign) because the audience is tiny. That drives ad fatigue and pushed CPM to <strong>$32.74</strong> on the active campaign — high for a local trade.</li><li><strong>CTR is healthy (2.5–3.6%)</strong> — the creative and angles are landing. The problem is everything downstream of the click.</li><li><strong>Same churn pattern as Google:</strong> five date-stamped campaigns in 35 days, each spun up and paused. Meta's learning phase needs roughly <strong>50 conversion events per ad set per week</strong>; this account generates a handful in total, so <strong>no ad set has ever exited learning</strong> — which means delivery is permanently in its least-efficient mode.</li></ul>
+</div></section>
+<section class="section" id="sec-4">
+<div class="section-inner">
+<span class="eyebrow">Part 4</span>
+<h2>4. Findings &amp; action queue</h2>
+<h3>🔴 P0 — Fix this week</h3>
+<p><strong>P0-1 · Switch from Engagement to Leads.</strong> Pause the "29-May Engagement Campaign" and run a single <strong>Leads</strong> campaign optimised for the form-submit conversion (the Leads campaigns already exist — relaunch one cleanly rather than the Engagement one). Engagement spend buys reactions; Leads spend buys form submits. This is the single biggest lever.</p>
+<p><strong>P0-2 · Fix the New South Wales geo bug.</strong> Every ad set targets a radius around <strong>"Box Hill" keyed to New South Wales</strong> (region_id 131 = NSW; the Sydney Box Hill) alongside the correct VIC neighbourhoods. Re-pick <strong>Box Hill, Victoria</strong> (or drop the city-radius entirely and keep the VIC neighbourhoods + a Melbourne-east/south-east radius). Verify in Ads Manager, then exclude NSW. <em>Any spend delivered to Sydney is pure waste.</em></p>
+<p><strong>P0-3 · Consolidate budget so an ad set can learn.</strong> Collapse to <strong>1 Leads campaign → 1–2 ad sets → 3–4 strong ads</strong> and put real budget behind it (≥$20–30/day). $10/day across 3 ad sets and 17 ads cannot produce the ~50 events/week an ad set needs to exit learning. Fewer, better-funded ad sets beat many starved ones.</p>
+<h3>🟠 P1 — Next 2 weeks</h3>
+<p><strong>P1-1 · Switch on the retargeting audiences that are already built.</strong> Six website audiences exist and are ready — <em>Landscaping / NDIS / Garden visitors (30d)</em> and <em>form-submitters (30d)</em> — but <strong>no campaign uses them</strong>. Add a small retargeting ad set (visitors minus converters) with a different, closer-to-the-sale angle. Warm audiences are the cheapest leads in the account and they're idle.</p>
+<p><strong>P1-2 · Build lookalikes + upload the CRM list.</strong> No lookalike audiences and no customer-list audience exist. Upload the GHL customer/enquiry list and build a 1–3% lookalike of converters — the strongest cold signal Meta has. (Value-based once you assign lead values.)</p>
+<p><strong>P1-3 · Widen the audience to cap frequency.</strong> Frequency hitting 3.46 on a 5-neighbourhood audience means fatigue. Either broaden geo (correctly, to east/south-east Melbourne) or lean into retargeting. Refresh the ad creative every ~30–45 days regardless.</p>
+<p><strong>P1-4 · Stop the campaign churn.</strong> Keep one Leads campaign and iterate <em>inside</em> it (new ad sets/creatives) rather than launching a new dated campaign each week — every relaunch restarts the learning phase and nothing compounds.</p>
+<h3>🟡 P2 — This month</h3>
+<ul><li><strong>P2-1 · Confirm the Conversions API (server-side) is live</strong>, not just the browser Pixel — it protects measurement against iOS/cookie loss and is free signal. Check event match quality in Events Manager.</li><li><strong>P2-2 · Trial Meta Instant Forms</strong> against the website-form path for the maintenance + NDIS angles. Native lead forms often lower CPL for local trades (less friction than a site visit), and they feed the same CRM via the existing integration.</li><li><strong>P2-3 · Add a cost cap</strong> (or test Advantage+ campaign budget / CBO) once there's conversion volume, so the algorithm doesn't chase expensive impressions on a tiny audience.</li><li><strong>P2-4 · Tidy the ad count:</strong> 5–6 ads per ad set on this budget is too many. 3–4 distinct angles per ad set is plenty for Meta to find a winner.</li><li><strong>P2-5 · NDIS angle:</strong> unlike Google search (near-zero demand), NDIS <em>does</em> work on Meta via audience targeting — keep it, but keep wording to "support / weekly home help", never "registered provider" or funding-status language (brand guide §14).</li></ul>
+</div></section>
+<section class="section alt" id="sec-5">
+<div class="section-inner">
+<span class="eyebrow">Part 5</span>
+<h2>5. 7-day action queue (for Mahbub)</h2>
+<div class="table-wrap"><table><thead><tr><th>Day</th><th>Action</th><th>Owner</th></tr></thead><tbody><tr><td>Today</td><td>Pause the Engagement campaign. Relaunch ONE Leads campaign optimised for form submits.</td><td>Mahbub</td></tr><tr><td>Today</td><td>Fix the Box Hill <strong>VIC vs NSW</strong> geo on the ad set; exclude NSW.</td><td>Mahbub</td></tr><tr><td>Day 1</td><td>Consolidate to 1–2 ad sets, 3–4 ads each; set budget ≥$20–30/day.</td><td>Mahbub</td></tr><tr><td>Day 2</td><td>Add a retargeting ad set using the existing 30-day visitor audiences (exclude converters).</td><td>Mahbub</td></tr><tr><td>Day 3</td><td>Upload the GHL customer list; build a 1–3% lookalike of form-submitters.</td><td>Mahbub</td></tr><tr><td>Day 4</td><td>Confirm CAPI/server-side events live in Events Manager; check match quality.</td><td>Mahbub</td></tr><tr><td>Day 7</td><td>Leave it alone to exit learning. Note baseline CPL; review in 2 weeks, don't churn.</td><td>Mahbub</td></tr></tbody></table></div>
+</div></section>
+<section class="section" id="sec-6">
+<div class="section-inner">
+<span class="eyebrow">Part 6</span>
+<h2>6. What's already done well</h2>
+<p>Genuinely solid foundations for a 35-day-old account:</p>
+<ul><li><strong>Pixel installed and firing</strong>, with three <strong>custom conversions</strong> properly defined per service (landscaping / NDIS / maintenance form submit) — the measurement backbone is in place.</li><li><strong>Six retargeting audiences built</strong> (per-service visitors + converters) — the raw material for warm campaigns is ready, it just needs deploying.</li><li><strong>Advantage Audience on</strong> and the VIC <strong>neighbourhood targeting is correct</strong> (Dandenong, Doncaster, Glen Waverley, Narre Warren) — only the Box Hill city pin is wrong.</li><li><strong>Healthy CTR (2.5–3.6%)</strong> and a mix of image + one video — the creative is working; the constraint is structure and budget, not the ads.</li></ul>
+<p><em>Read-only audit. No campaign, budget, audience or creative change was made to the account. Every recommendation is queued for Mahbub/Zafer to apply.</em></p>
+</div></section>
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="brand-block">
+      <img src="https://reports.megamarketing.com.au/public/assets/mega/mega-secondary-logo.png" alt="MEGA Marketing">
+      <p>Prepared by MEGA Marketing for Melbourne GreenWorks. We build, scale, and report on growth systems for Australian service businesses.</p>
+    </div>
+    <div>
+      <h5>This report</h5>
+      <ul>
+        <li><a href="#sec-2">Scorecard</a></li><li><a href="#sec-4">Findings</a></li><li><a href="#sec-5">Action queue</a></li><li><a href="#sec-6">Done well</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>MEGA Marketing</h5>
+      <ul>
+        <li><a href="https://megamarketing.com.au">megamarketing.com.au</a></li>
+        <li><a href="https://megamarketing.com.au/portfolio">Portfolio</a></li>
+        <li><a href="https://link.megamarketing.com.au/widget/booking/K9UqeXX37jyeSguz6SuN?utm_source=client-report&amp;utm_medium=report-footer&amp;utm_campaign=melbourne-greenworks&amp;utm_content=meta-ads-audit">Book a call</a></li>
+        <li><a href="mailto:hello@megamarketing.com.au">hello@megamarketing.com.au</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="left">© 2026 MEGA Marketing · Confidential — for Melbourne GreenWorks use only</div>
+    <div class="right">
+      Generated 10/06/2026
+      <a href="https://megamarketing.com.au">megamarketing.com.au</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
