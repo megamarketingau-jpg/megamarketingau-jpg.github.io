@@ -50,13 +50,53 @@ ol{padding-left:20px} ol li{margin:6px 0;font-size:14px}
 <h2>Four-campaign architecture + budget split</h2>
 <p class="muted">From the audit. Move off the single Engagement campaign to four roles, each with a budget share. LP-traffic conversions throughout (no Instant Forms).</p>
 <table>
-<tr><th>Campaign role</th><th>Budget share</th><th>What it does</th><th>Concepts</th></tr>
-<tr><td><b>Prospecting</b><br><span class="muted">Advantage+ broad → lead event</span></td><td>60–70%</td><td>Cold demand creation across the 3 audiences</td><td>A · B · D</td></tr>
-<tr><td><b>Scaling</b><br><span class="muted">1 CBO ad set, winners only</span></td><td>20–30%</td><td>Consolidates proven winners; feed from Testing</td><td>promote C (or A–D winner)</td></tr>
-<tr><td><b>Testing</b><br><span class="muted">1 angle = 1 ad set, 5+ creatives</span></td><td>10–20%</td><td>New angles prove out before Scaling</td><td>B · D first</td></tr>
-<tr><td><b>Retargeting</b><br><span class="muted">30d visitors + CRM + 90d engagers</span></td><td>10–20%</td><td>Warm, direct-response; switches on the 6 idle audiences</td><td>E</td></tr>
+<tr><th>Campaign role</th><th>Budget share</th><th>What it does</th><th>What goes in it</th></tr>
+<tr><td><b>Prospecting</b><br><span class="muted">Advantage+ broad → lead event</span></td><td>~65%</td><td>Cold demand creation; the 4 new angles compete head-to-head</td><td><b>A · B · C · D</b></td></tr>
+<tr><td><b>Scaling</b><br><span class="muted">1 CBO ad set, winners only</span></td><td>~22%</td><td>Holds proven winners; compounds budget on what works</td><td><b>The proven winner ad</b> (Maintenance Ads 02, via post ID)</td></tr>
+<tr><td><b>Retargeting</b><br><span class="muted">30d visitors + CRM + 90d engagers</span></td><td>~13%</td><td>Warm, direct-response; switches on the 6 idle audiences</td><td><b>E</b></td></tr>
 </table>
-<p class="muted" style="margin-top:12px">Fix first (audit P0s): pause the Engagement campaign · launch Advantage+ broad <b>Leads</b> (website-conversion) · fix the <b>Box Hill NSW→VIC</b> geo · fund one ad set ≥$20–30/day so it exits learning · set CTA to Get Quote/Learn More.</p>
+<p class="muted" style="margin-top:12px">Testing is run <i>inside</i> Prospecting (the 4 angles are the test). Fix first (audit P0s): pause the Engagement campaign · launch Advantage+ broad <b>Leads</b> (website-conversion) · fix the <b>Box Hill NSW→VIC</b> geo · fund one ad set ≥$20–30/day so it exits learning · set CTA to Get Quote/Learn More.</p>
+</div></section>
+
+<section><div class="wrap">
+<div class="eyebrow">Campaign setup — best practice</div>
+<h2>How to build each campaign (ad sets · ads · audience · landing page)</h2>
+
+<div class="why" style="border-left-color:var(--n);font-size:13.5px">
+<b>Proven winner in the account right now:</b> the ad <b>"07-May · Maintenance Ads 02"</b> — the <i>"Stress Free Property Maintenance / your weekends weren't meant for this"</i> ad. It is the only active ad with real volume <b>and</b> a conversion: <b>1,957 impressions, 2.86% CTR, $68.89 spend, 1 maintenance form submit</b>. Reuse this <b>exact ad via its existing post ID</b> (<code>1082079338320132_122101392608338978</code>) in Scaling so it keeps its likes, comments and shares (social proof lifts CTR 10–30%). <span class="muted">(Runner-up on efficiency: NDIS Ads 03 — cheapest form submit at $19.88, but thin volume.)</span>
+</div>
+
+<h3 style="color:var(--n);margin-top:18px">1 · Prospecting &nbsp;<span class="muted" style="font-weight:400">~65% · ~$25/day</span></h3>
+<div class="split">
+<b>Structure</b><div><b>1 ad set</b>, Advantage+ broad. Objective <b>Leads → Website conversion</b>, optimise to the form-submit event (move to Conversion Lead via CAPI once live). The <b>4 ads compete head-to-head</b> inside the one broad ad set (this is the angle test).</div>
+<b>Audience</b><div>Advantage+ Audience — <b>no interest narrowing</b> (the signal is in the creative). Location: <b>Greater Melbourne, Victoria</b>, weighted east/south-east (Box Hill <b>VIC</b>, Doncaster, Glen Waverley, Dandenong, Narre Warren) + ~15km. Age 25–65, all genders. Placements: Advantage+ (automatic).</div>
+<b>Ads → LP</b><div><b>A</b> → /maintenance-offer/ · <b>B</b> → /maintenance-offer/ · <b>C</b> → /landscaping-offer/ · <b>D</b> → /ndis-maintenance/</div>
+<b>Option</b><div>For cleaner optimisation later, split <b>D (NDIS)</b> into its own ad set — different ICP, LP and compliance. For the initial head-to-head, all four run together as you asked.</div>
+</div>
+
+<h3 style="color:var(--n);margin-top:16px">2 · Scaling &nbsp;<span class="muted" style="font-weight:400">~22% · ~$8–10/day · CBO</span></h3>
+<div class="split">
+<b>Structure</b><div><b>1 ad set, CBO</b> (Advantage campaign budget). Objective <b>Leads → Website conversion</b>. Winners only — don't pre-load with untested creative.</div>
+<b>Audience</b><div>Advantage+ broad — same geo + age as Prospecting.</div>
+<b>Ad → LP</b><div><b>The proven winner</b> (Maintenance Ads 02) added via its <b>post ID</b> to inherit social proof → /maintenance-offer/. As Prospecting throws a winner (beats the control's cost/lead for 7 days), duplicate it in here via post ID too.</div>
+</div>
+
+<h3 style="color:var(--n);margin-top:16px">3 · Retargeting &nbsp;<span class="muted" style="font-weight:400">~13% · ~$5/day</span></h3>
+<div class="split">
+<b>Structure</b><div><b>1 ad set</b>. Objective <b>Leads → Website conversion</b>, optimise to form submit.</div>
+<b>Audience</b><div><b>Include:</b> website visitors 30d (the 3 "All Visitors" audiences already built — landscaping / NDIS / garden) + 90-day Facebook/Instagram page engagers + your uploaded GHL/CRM lead list. <b>Exclude:</b> the 3 form-submit audiences (don't pay to retarget people who already converted).</div>
+<b>Ad → LP</b><div><b>E</b> (risk-reversal) → the offer page matching the visitor's interest; default /maintenance-offer/.</div>
+</div>
+
+<table style="margin-top:16px">
+<tr><th>Asset</th><th>Campaign</th><th>Audience</th><th>Landing page</th></tr>
+<tr><td>A · Weekends Back</td><td>Prospecting</td><td>Advantage+ broad</td><td>/maintenance-offer/</td></tr>
+<tr><td>B · Local Crew</td><td>Prospecting</td><td>Advantage+ broad</td><td>/maintenance-offer/</td></tr>
+<tr><td>C · Transform Backyard</td><td>Prospecting</td><td>Advantage+ broad</td><td>/landscaping-offer/</td></tr>
+<tr><td>D · NDIS Support</td><td>Prospecting</td><td>Advantage+ broad</td><td>/ndis-maintenance/</td></tr>
+<tr><td><b>Winner · Maintenance Ads 02</b> (post ID)</td><td><b>Scaling (CBO)</b></td><td>Advantage+ broad</td><td>/maintenance-offer/</td></tr>
+<tr><td>E · Still Thinking?</td><td>Retargeting</td><td>30d visitors + 90d engagers + CRM, <i>exclude converters</i></td><td>/maintenance-offer/ (match to interest)</td></tr>
+</table>
 </div></section>
 
 <section><div class="wrap">
@@ -72,7 +112,7 @@ ol{padding-left:20px} ol li{margin:6px 0;font-size:14px}
         <div class="role">↳ Prospecting (Maintenance)</div>
         <p class="copy">Your weekends weren't meant for mowing, cleaning and chasing trades. One crew handles your lawn, garden and home, inside and outside, every week. Fixed weekly plans from $197. Free quote in 24 hours.</p>
         <div class="cta">Get Quote</div>
-        <p class="why"><b>Why:</b> The account's proven winner (top volume + a form submit). Differentiated vs Jim's Mowing (outdoor-only) on one-crew, inside+outside, weekly.</p>
+        <p class="why"><b>Why:</b> Refreshes the account's proven angle (the Maintenance Ads 02 winner — top volume + a form submit). Differentiated vs Jim's Mowing (outdoor-only) on one-crew, inside+outside, weekly.</p>
         <div class="sizes">Sizes: 1080×1080 · 1080×1350 · 1080×1920</div>
       </div>
     </div>
@@ -81,7 +121,7 @@ ol{padding-left:20px} ol li{margin:6px 0;font-size:14px}
       <div class="cbody">
         <div class="ctag">Concept B · Expert / Founder</div>
         <h3>Meet Your Local Crew</h3>
-        <div class="role">↳ Prospecting + Testing</div>
+        <div class="role">↳ Prospecting</div>
         <p class="copy">Same friendly team. Same day. Every week. A local Melbourne crew that handles your whole property, so you get one team you actually know and trust. No revolving faces, no chasing.</p>
         <div class="cta">Learn More</div>
         <p class="why"><b>Why:</b> White space: every competitor is faceless and the audit found MGW runs no founder content. 'Same crew' is the most ownable promise.</p>
@@ -93,10 +133,10 @@ ol{padding-left:20px} ol li{margin:6px 0;font-size:14px}
       <div class="cbody">
         <div class="ctag">Concept C · Trust / Authority</div>
         <h3>Transform Your Backyard</h3>
-        <div class="role">↳ Prospecting → Scaling</div>
+        <div class="role">↳ Prospecting</div>
         <p class="copy">From overgrown to outdoor space you're proud of. One team handles design, build and cleanup, fixed quotes, licensed and insured. 4.9 stars from 50+ reviews. 200+ Melbourne projects. Free quote within 24 hours.</p>
         <div class="cta">Get Quote</div>
-        <p class="why"><b>Why:</b> Leans on rating + real transformation rather than raw client count (vs Must Have Maintenance's 2,800+). First to promote into Scaling.</p>
+        <p class="why"><b>Why:</b> Leans on rating + real transformation rather than raw client count (vs Must Have Maintenance's 2,800+). Competes head-to-head with A, B and D in Prospecting.</p>
         <div class="sizes">Sizes: 1080×1080 · 1080×1350 · 1080×1920</div>
       </div>
     </div>
@@ -142,19 +182,19 @@ ol{padding-left:20px} ol li{margin:6px 0;font-size:14px}
 <h2>For Mahbub</h2>
 <ol>
 <li>Fix the account first (audit P0s): Engagement→Leads, NSW→VIC geo, fund one ad set ≥$20–30/day.</li>
-<li>Load <b>A, B, D</b> into <b>Prospecting</b> (broad Advantage+), one angle per ad set, A as the control.</li>
-<li>Load <b>E</b> into the new <b>Retargeting</b> campaign (30-day visitors <i>minus</i> converters + 90-day engagers).</li>
-<li>Hold <b>C</b> to promote into <b>Scaling</b> (CBO) once it wins the read.</li>
+<li><b>Prospecting:</b> one broad Advantage+ ad set, load <b>A, B, C, D</b> as 4 ads competing head-to-head, each to its own landing page (see table above).</li>
+<li><b>Scaling (CBO):</b> seed with the <b>proven winner ad</b> (Maintenance Ads 02) via its <b>post ID</b> so it inherits social proof → /maintenance-offer/.</li>
+<li><b>Retargeting:</b> one ad set, include 30-day visitors + 90-day engagers + CRM list, <b>exclude</b> the form-submit (converter) audiences; run ad <b>E</b>.</li>
 <li>Set CTA to <b>Get Quote / Learn More</b> (not Book Now). Keep LP-traffic (offer pages); do not use Instant Forms.</li>
-<li><b>7-day read</b> vs the current cost per form-submit: pause anything &gt;30% worse; promote the hook-rate winner. Kill any single ad with hook rate &lt;20% after 48h.</li>
-<li>Commission <b>video</b> versions of the two best performers next cycle.</li>
+<li><b>7-day read</b> vs the winner's cost per form-submit: pause any Prospecting ad &gt;30% worse; <b>promote the new winner into Scaling via post ID</b>. Kill any single ad with hook rate &lt;20% after 48h.</li>
+<li>Commission <b>video</b> versions of the two best performers next cycle (video is the proven hook).</li>
 </ol>
 </div></section>
 
 <section><div class="wrap">
 <div class="eyebrow">Audit trail + cost</div>
 <h2>Sources &amp; ledger</h2>
-<p class="muted">Account ad-level insights + winning creatives (Meta Ads API) · competitor ads (Meta Ad Library, 40 records) · intent (a keyword-demand tool, Melbourne) · brand identity (brandguide.md, audited 29/05). Images: an AI image model + deterministic brand-text overlay. Files: <code>campaigns/2026-06-meta-creatives/</code> (research.md · README.md · concept-*/ · _raw/).</p>
+<p class="muted">Account ad-level insights + winning creatives (Meta Ads API) · competitor ads (Meta Ad Library, 40 records) · intent (a keyword-demand tool, Melbourne) · brand identity (brandguide.md, audited 29/05). Images: an AI image model (9:16 scenes) + deterministic brand-text overlay. Files: <code>campaigns/2026-06-meta-creatives/</code> (research.md · README.md · concept-*/ · _raw/).</p>
 <p class="muted"><b>Cost (approx, AUD):</b> AI image generation (5 images) ≈ $0.40–0.70 · competitor research ≈ $0.05–0.30 · intent ≈ $0.01 · <b>Total ≈ $0.50–1.00</b>. <i>Placeholder ranges — actual billed amounts vary per provider.</i></p>
 </div></section>
 
