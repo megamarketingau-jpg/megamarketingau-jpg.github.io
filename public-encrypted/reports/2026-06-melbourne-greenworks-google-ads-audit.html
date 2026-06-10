@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Google Ads Audit & Optimisation — Melbourne GreenWorks</title>
+<meta name="generator" content="MEGA Marketing report system">
+<style>
+  :root {
+    --client-name: "Melbourne GreenWorks";
+    --client-primary: #fe5e13;
+    --client-secondary: #061257;
+    --client-accent: #061257;
+    --client-logo: url('https://melbournegreenworks.com.au/melbournegreenworks-logo.png');
+  }
+  /* ===================================================================
+   MEGA Marketing × Client co-branded report stylesheet
+   Webpage-style — modelled on megamarketing.com.au.
+   Conforms to: _shared/canonical-ownership.md v1.0
+   ===================================================================
+   Required CSS variables (renderer injects these into :root BEFORE this loads,
+   pulled from client-<slug>/brandguide.md §6):
+
+     --client-name        e.g. "Lynbrook Optical"
+     --client-primary     e.g. #1B3A5C   (used for buttons, links, accents)
+     --client-secondary   e.g. #C9A65A   (headings dark / hero text)
+     --client-accent      e.g. #E2B341   (highlights, hover, emoji bg)
+     --client-logo        e.g. url(...)  (top-left nav)
+   =================================================================== */
+
+:root {
+  /* MEGA agency colours — fixed, never overridden */
+  --mega-primary: #0E3F56;
+  --mega-cyan: #2BC8DD;
+  --mega-green: #2BDD99;
+
+  /* Neutral palette (megamarketing.com.au feel) */
+  --ink: #1a1a1a;
+  --ink-soft: #444;
+  --muted: #6b7280;
+  --rule: #e5e7eb;
+  --paper: #ffffff;
+  --soft: #f8fafc;
+  --softer: #f3f4f6;
+
+  /* Client fallbacks — overridden per-render */
+  --client-name: "Client";
+  --client-primary: var(--mega-primary);
+  --client-secondary: var(--ink);
+  --client-accent: var(--mega-cyan);
+  --client-logo: url('https://reports.megamarketing.com.au/public/assets/mega/mega-primary-logo.png');
+
+  /* Derived state colours (soft tints) */
+  --client-primary-soft: color-mix(in srgb, var(--client-primary) 8%, white);
+  --client-accent-soft: color-mix(in srgb, var(--client-accent) 14%, white);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--client-primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* -- Typography ------------------------------------------------------ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: 48px; font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-size: 32px; }
+h3 { font-size: 20px; }
+h4 { font-size: 18px; }
+p  { margin: 0 0 16px; }
+strong { color: var(--ink); font-weight: 600; }
+.lead { font-size: 18px; color: var(--muted); line-height: 1.65; }
+
+/* -- Top navigation -------------------------------------------------- */
+
+.topnav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+.topnav-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 32px;
+}
+/* Client brand block is NON-clickable by design — it's identity, not navigation.
+   Always wrap in <div class="brand">, never <a>. */
+.topnav .brand {
+  display: flex; align-items: center;
+}
+.topnav .brand img {
+  height: 40px;
+  max-width: 200px;
+  object-fit: contain;
+  display: block;
+}
+.topnav nav {
+  display: flex; align-items: center; gap: 24px;
+}
+.topnav nav a {
+  font-size: 14px; font-weight: 500;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.topnav nav a:hover { color: var(--client-primary); text-decoration: none; }
+.topnav .cta {
+  background: var(--client-primary);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px; font-weight: 600;
+}
+.topnav .cta:hover { filter: brightness(0.92); text-decoration: none; }
+
+/* Mobile: hide section nav links, keep logo + cta */
+@media (max-width: 720px) {
+  .topnav nav { display: none; }
+  .topnav .cta { padding: 8px 14px; font-size: 13px; }
+}
+
+/* -- Hero ------------------------------------------------------------ */
+
+.hero {
+  padding: 80px 32px 64px;
+  background: linear-gradient(180deg, var(--paper) 0%, var(--soft) 100%);
+}
+.hero-inner {
+  max-width: 1180px; margin: 0 auto;
+  text-align: center;
+}
+.hero .eyebrow {
+  display: inline-block;
+  background: var(--client-accent-soft);
+  color: var(--client-primary);
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-size: 56px;
+  max-width: 800px;
+  margin: 0 auto 18px;
+  color: var(--ink);
+}
+.hero .lead {
+  max-width: 640px;
+  margin: 0 auto 32px;
+}
+.hero .meta {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 13px; color: var(--muted);
+  font-weight: 500;
+}
+.hero .meta .dot { color: var(--rule); }
+
+/* Headline KPI strip (optional, sits below hero text) */
+.headline-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 1080px;
+  margin: 40px auto 0;
+}
+.headline-strip .cell {
+  background: var(--paper);
+  padding: 24px 20px;
+  text-align: center;
+}
+.headline-strip .cell .v {
+  font-size: 32px; font-weight: 700; color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.headline-strip .cell .l {
+  font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); margin-top: 4px;
+}
+@media (max-width: 720px) {
+  .hero h1 { font-size: 36px; }
+  .hero { padding: 48px 24px 32px; }
+  .headline-strip { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* -- Section structure ---------------------------------------------- */
+
+.section {
+  padding: 80px 32px;
+  background: var(--paper);
+}
+.section.alt { background: var(--soft); }
+.section-inner { max-width: 1080px; margin: 0 auto; }
+
+.section .eyebrow {
+  display: inline-block;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--client-primary);
+  margin-bottom: 12px;
+}
+.section h2 {
+  font-size: 36px;
+  max-width: 720px;
+  margin-bottom: 20px;
+}
+.section h2.center { margin-left: auto; margin-right: auto; text-align: center; }
+.section .lead.center { text-align: center; margin-left: auto; margin-right: auto; }
+
+@media (max-width: 720px) {
+  .section { padding: 56px 24px; }
+  .section h2 { font-size: 28px; }
+}
+
+/* -- Feature cards (with emoji icons) ------------------------------ */
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  margin-top: 40px;
+}
+.feature {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 32px 28px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.feature:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+  border-color: var(--client-primary);
+}
+.feature .emoji {
+  font-size: 36px;
+  line-height: 1;
+  margin-bottom: 16px;
+  display: block;
+}
+.feature h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.feature p {
+  font-size: 14px; color: var(--muted);
+  margin: 0;
+}
+.feature .meta {
+  font-size: 13px; color: var(--client-primary);
+  font-weight: 600; margin-top: 12px;
+}
+
+/* -- KPI cards (number-led variant) ---------------------------------- */
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 32px 0;
+}
+.kpi {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 24px;
+}
+.kpi .label {
+  font-size: 11px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--muted);
+}
+.kpi .value {
+  font-size: 36px; font-weight: 700;
+  color: var(--ink); margin: 8px 0 4px;
+  letter-spacing: -0.02em;
+}
+.kpi .delta { font-size: 13px; color: var(--muted); font-weight: 500; }
+.kpi .delta.up { color: #15803D; }
+.kpi .delta.down { color: #DC2626; }
+
+/* -- Two-column comparison (like Traditional vs Simple Sites) ------- */
+
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-top: 40px;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.compare > div { padding: 32px 28px; }
+.compare .left { background: var(--softer); }
+.compare .right { background: var(--client-primary-soft); border-left: 1px solid var(--rule); }
+.compare h3 { font-size: 18px; margin-bottom: 18px; }
+.compare ul { list-style: none; padding: 0; margin: 0; }
+.compare li { padding: 8px 0 8px 28px; position: relative; font-size: 14px; color: var(--ink-soft); }
+.compare .left li::before { content: '✕'; color: #DC2626; position: absolute; left: 0; font-weight: 700; }
+.compare .right li::before { content: '✓'; color: #15803D; position: absolute; left: 0; font-weight: 700; }
+@media (max-width: 720px) {
+  .compare { grid-template-columns: 1fr; }
+  .compare .right { border-left: 0; border-top: 1px solid var(--rule); }
+}
+
+/* -- Tables ---------------------------------------------------------- */
+
+.table-wrap {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 24px 0;
+}
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th {
+  background: var(--soft);
+  font-weight: 600; font-size: 12px;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--muted);
+}
+tr:last-child td { border-bottom: 0; }
+tr.total td { background: var(--soft); font-weight: 600; color: var(--ink); }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* -- Callouts -------------------------------------------------------- */
+
+.callout {
+  background: var(--client-accent-soft);
+  border-left: 4px solid var(--client-accent);
+  border-radius: 0 8px 8px 0;
+  padding: 18px 22px;
+  margin: 24px 0;
+  font-size: 14px; line-height: 1.6;
+  color: var(--ink-soft);
+}
+.callout.warn { background: #FEF3C7; border-left-color: #F59E0B; }
+.callout.good { background: #D1FAE5; border-left-color: #10B981; }
+.callout strong { color: var(--ink); }
+
+/* -- Lists with emoji bullets -------------------------------------- */
+
+ul.emoji-list { list-style: none; padding: 0; margin: 16px 0; }
+ul.emoji-list li {
+  position: relative;
+  padding: 6px 0 6px 32px;
+  font-size: 15px; color: var(--ink-soft);
+}
+ul.emoji-list li::before {
+  content: attr(data-emoji);
+  position: absolute; left: 0; top: 4px;
+  font-size: 18px;
+}
+
+ul.check { list-style: none; padding: 0; margin: 12px 0; }
+ul.check li {
+  position: relative; padding: 6px 0 6px 28px;
+  font-size: 15px; color: var(--ink-soft);
+}
+ul.check li::before {
+  content: '✓'; position: absolute; left: 0;
+  color: var(--client-primary); font-weight: 700;
+}
+
+/* -- Asset / image cards (clickable to Drive) ----------------------- */
+
+.asset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 32px;
+  align-items: start;
+}
+.asset-card {
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--paper);
+  text-decoration: none; color: inherit;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.asset-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  text-decoration: none;
+}
+/* Asset images render at their NATURAL aspect ratio — never cropped.
+   Mixed 1:1 / 4:5 / 9:16 cards in one grid will have different heights;
+   align-items: start on .asset-grid makes that look intentional. */
+.asset-card img { width: 100%; height: auto; display: block; background: var(--soft); }
+.asset-card .meta { padding: 14px 18px; }
+.asset-card .meta .title { font-weight: 600; color: var(--ink); margin-bottom: 4px; font-size: 14px; }
+.asset-card .meta .sub { font-size: 12px; color: var(--muted); }
+.asset-card .meta .open { font-size: 12px; color: var(--client-primary); font-weight: 600; margin-top: 8px; }
+.asset-card .meta .open::after { content: ' ↗'; }
+
+/* -- Tags ------------------------------------------------------------ */
+
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.5px;
+  background: var(--softer); color: var(--ink-soft);
+  margin-right: 4px;
+}
+.tag.win { background: #D1FAE5; color: #065F46; }
+.tag.warn { background: #FEF3C7; color: #92400E; }
+.tag.fail { background: #FEE2E2; color: #991B1B; }
+.tag.brand { background: var(--client-accent-soft); color: var(--client-primary); }
+
+/* -- Footer (dark, like megamarketing.com.au) ---------------------- */
+
+.site-footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding: 56px 32px 32px;
+}
+.site-footer-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.site-footer .brand-block { max-width: 360px; }
+.site-footer .brand-block img { height: 52px; margin-bottom: 20px; }
+.site-footer .brand-block p { font-size: 13px; color: #94a3b8; line-height: 1.6; margin: 0; }
+.site-footer h5 {
+  color: #fff; font-size: 12px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px;
+}
+.site-footer ul { list-style: none; padding: 0; margin: 0; }
+.site-footer ul li { margin: 8px 0; }
+.site-footer ul li a { font-size: 13px; color: #cbd5e1; text-decoration: none; }
+.site-footer ul li a:hover { color: #fff; text-decoration: underline; }
+
+.site-footer .bottom {
+  max-width: 1180px;
+  margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid #1e293b;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; color: #64748b;
+}
+.site-footer .bottom .right a { color: #cbd5e1; margin-left: 16px; }
+
+@media (max-width: 720px) {
+  .site-footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .site-footer .bottom { flex-direction: column; gap: 8px; }
+}
+
+/* -- Print niceties (PDF export) ----------------------------------- */
+
+@media print {
+  .topnav { position: static; }
+  .topnav .cta, .topnav nav a { display: none; }
+  .section { padding: 24px 0; page-break-inside: avoid; }
+  .feature:hover, .asset-card:hover { transform: none; box-shadow: none; }
+}
+
+  
+</style>
+</head>
+<body>
+
+<!-- ============================ TOP NAV ============================ -->
+<header class="topnav">
+  <div class="topnav-inner">
+    <div class="brand">
+      <!-- Client logo: identity, not navigation. Never wrap in <a>. -->
+      <img src="https://melbournegreenworks.com.au/melbournegreenworks-logo.png" alt="Melbourne GreenWorks">
+    </div>
+    <nav>
+      <a href="#sec-1">Verdict</a><a href="#sec-3">Performance</a><a href="#sec-5">Findings</a><a href="#sec-6">Action queue</a>
+    </nav>
+    <a class="cta" href="#sec-6">Next steps</a>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- ============================ HERO ============================ -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Google Ads Audit</span>
+    <h1>Google Ads Audit & Optimisation</h1>
+    <p class="lead">Account 8089718391 · first-month review</p>
+    <div class="meta">
+      <span>Melbourne GreenWorks</span>
+      <span class="dot">·</span>
+      <span>07/05–10/06/2026</span>
+      <span class="dot">·</span>
+      <span>Issued 10/06/2026</span>
+    </div>
+    <div class="headline-strip"><div class="cell"><div class="v">$2,212</div><div class="l">Month 1 spend</div></div><div class="cell"><div class="v">43</div><div class="l">Leads (calls + forms)</div></div><div class="cell"><div class="v">$51</div><div class="l">Blended cost / lead</div></div><div class="cell"><div class="v">4 / 12</div><div class="l">Campaigns live</div></div></div>
+  </div>
+</section>
+
+<!-- ============================ REPORT BODY ============================ -->
+<main>
+  <section class="section">
+<div class="section-inner">
+<p><strong>Account:</strong> Melbourne Greenworks Property Services (<code>8089718391</code>) · AUD · Australia/Adelaide · standalone (no manager account)</p>
+<p><strong>Review window:</strong> 07/05/2026 – 10/06/2026 (first full month live, 35 days)</p>
+<p><strong>Prepared:</strong> 10/06/2026 · Read-only audit — no changes made to the account</p>
+<p><strong>Benchmarked against:</strong> Mega Marketing lead-gen framework + 2026 best practice · brand compliance per <code>brandguide.md</code> (audited 29/05/2026)</p>
+</div></section>
+<section class="section alt" id="sec-1">
+<div class="section-inner">
+<span class="eyebrow">Part 1</span>
+<h2>1. Verdict</h2>
+<p>In its first month the account spent <strong>$2,212</strong> and recorded <strong>43 lead actions</strong> (calls + form submits) at a blended <strong>$51 cost per lead</strong>. That headline hides a wide split: one campaign (<strong>Landscaping Search</strong>) is genuinely strong at <strong>$18 per lead</strong>, while the rest of the spend went to a <strong>Display campaign at $78</strong>, an <strong>NDIS Search campaign at $182</strong>, and a <strong>now-paused Garden campaign that burned $743 at $82</strong> before being switched off. The fundamentals a new account needs are mostly in place — conversion tracking is live, negative-keyword lists are built and attached, ad strength is Excellent, and ads point to dedicated landing pages, not the homepage. The problems are <strong>allocation and discipline</strong>: budget is spread across 12 campaigns (8 now dead), the winner is starved while weak campaigns spend freely, Quality Scores are low (mostly 3/10), NDIS search demand barely exists, and the live ads carry <strong>unverified "4.9 / 50+ / 200+" rating claims</strong> that the brand guide flags as a publish blocker.</p>
+<p><strong>Net:</strong> the account is one good campaign wrapped in noise. Concentrate budget on Landscaping, pause Display and rebuild NDIS off search, fix Quality Score, and strip the unverified claims. Done together, the realistic target is a blended <strong>$25–35 cost per lead</strong> at the same or lower spend.</p>
+</div></section>
+<section class="section" id="sec-2">
+<div class="section-inner">
+<span class="eyebrow">Part 2</span>
+<h2>2. Scorecard</h2>
+<div class="table-wrap"><table><thead><tr><th>#</th><th>Dimension</th><th>Rating</th><th>Note</th></tr></thead><tbody><tr><td>1</td><td>Account structure</td><td>🔴 Poor</td><td>12 campaigns, 8 paused/removed; date-stamped "test" naming; single ad group each; churn pattern</td></tr><tr><td>2</td><td>Serving reality</td><td>🟢 OK</td><td>All 4 live campaigns truly SERVING; no ENABLED-but-ended; Garden (09-June) still in learning</td></tr><tr><td>3</td><td>Bidding</td><td>🟡 Weak</td><td>All on Maximise Conversions; low-volume campaigns can't exit learning; winner has no bid control</td></tr><tr><td>4</td><td>Conversion tracking</td><td>🟢 Good</td><td>Calls + 3 lead-form tags primary &amp; counted; minor clutter (YouTube view counted); no lead values set</td></tr><tr><td>5</td><td>Keywords + Quality Score</td><td>🔴 Poor</td><td>QS mostly 3/10; main term "landscaping" QS 3; generic garden terms sitting inside the NDIS campaign</td></tr><tr><td>6</td><td>Negatives</td><td>🟢 Good</td><td>3 shared lists (281/298/224 members) built and attached to the live search campaigns</td></tr><tr><td>7</td><td>Search-term waste</td><td>🟡 Moderate</td><td>~$136 on zero-conversion generic "near me" terms this month</td></tr><tr><td>8</td><td>Impression share</td><td>🔴 Poor</td><td>Landscaping winner loses 70% of impressions to ad rank + 25% to budget — capturing only ~10%</td></tr><tr><td>9</td><td>Ads + landing-page match</td><td>🟢 Good</td><td>RSAs Excellent/Good; each campaign → its own offer page (not homepage)</td></tr><tr><td>10</td><td>Extensions</td><td>🟢 Good</td><td>Sitelinks 4–7, callouts 5, call on all; structured snippets thin + garbled on 2 campaigns</td></tr><tr><td>11</td><td>Performance Max</td><td>⚪ N/A</td><td>The single PMax campaign is removed; none live (opportunity, not a fault)</td></tr><tr><td>12</td><td>Ad-copy compliance</td><td>🔴 Poor</td><td>Unverified 4.9 / 50+ / 200+ ratings live; "best"/"licensed" claims; an em dash; garbled snippet</td></tr></tbody></table></div>
+</div></section>
+<section class="section alt" id="sec-3">
+<div class="section-inner">
+<span class="eyebrow">Part 3</span>
+<h2>3. Performance — the month in numbers</h2>
+<p>All figures from the account, 07/05–10/06/2026. "Leads" = counted conversions (phone calls from ads + website lead-form submissions).</p>
+<div class="table-wrap"><table><thead><tr><th>Campaign</th><th>Status now</th><th>Spend</th><th>Leads</th><th>Cost / lead</th></tr></thead><tbody><tr><td>07-May • Landscaping Search</td><td>🟢 Live</td><td>$395.51</td><td>22</td><td><strong>$17.98</strong></td></tr><tr><td>07-May • Garden Maintenance</td><td>⏸ Paused</td><td>$742.91</td><td>9</td><td>$82.55</td></tr><tr><td>12-May • Display</td><td>🟢 Live</td><td>$392.41</td><td>5</td><td>$78.48</td></tr><tr><td>20-May • NDIS Maintenance</td><td>🟢 Live</td><td>$364.03</td><td>2</td><td>$182.01</td></tr><tr><td>13-May • NDIS Maintenance</td><td>⏸ Paused</td><td>$184.20</td><td>0</td><td>—</td></tr><tr><td>07-May • NDIS Maintenance</td><td>⏸ Paused</td><td>$109.40</td><td>5</td><td>$21.88</td></tr><tr><td>09-June • Garden Maintenance</td><td>🟢 Live (learning)</td><td>$23.81</td><td>0</td><td>—</td></tr><tr><td><strong>Total</strong></td><td></td><td><strong>$2,212.27</strong></td><td><strong>43</strong></td><td><strong>$51.45</strong></td></tr></tbody></table></div>
+<p><strong>Live campaigns only (4):</strong> $1,175.76 · 29 leads · <strong>$40.54</strong> blended.</p>
+<p>Reading it:</p>
+<ul><li><strong>Landscaping Search is the whole account's profit centre</strong> — $18 per lead, 6.25% click-through, and it is the only campaign with healthy economics.</li><li><strong>The Display campaign ($392) is the clearest waste.</strong> Display shows banner ads across the web to low-intent audiences; for a local quote-driven service it delivers cheap clicks ($0.73) but weak leads ($78 each, 4× the search winner). Its 5 "conversions" are also the softest in the account.</li><li><strong>NDIS Maintenance (live, $182/lead)</strong> isn't really buying NDIS traffic — see the demand finding below.</li><li><strong>The churn pattern is visible:</strong> the biggest single spender this month, "07-May Garden Maintenance" ($743 at $82), was paused and replaced by a fresh $9/day "09-June Garden Maintenance". Spinning up new campaigns instead of fixing the old one resets learning every time and is why nothing compounds.</li></ul>
+<div class="callout"><strong>Validation gap (flag):</strong> these are platform-reported lead actions, not yet reconciled against actual booked jobs in the CRM. Before scaling spend, confirm with Zafer how many of the 43 became real enquiries. If call/form quality is high, a $40 blended CPL is workable; if half are junk, the real CPL is double. <em>(Source: Google Ads conversion count; no CRM cross-check available this audit.)</em></div>
+</div></section>
+<section class="section" id="sec-4">
+<div class="section-inner">
+<span class="eyebrow">Part 4</span>
+<h2>4. Market context</h2>
+<div class="table-wrap"><table><thead><tr><th>Term</th><th>Searches/mo</th><th>Market CPC</th><th>Top-of-page (high)</th></tr></thead><tbody><tr><td>gardener near me</td><td>1,300</td><td>$5.02</td><td>$5.96</td></tr><tr><td>landscaping melbourne</td><td>1,000</td><td>$4.39</td><td>$5.69</td></tr><tr><td>landscapers melbourne</td><td>1,000</td><td>$4.39</td><td>$5.69</td></tr><tr><td>landscaping near me</td><td>880</td><td>$3.51</td><td>$5.95</td></tr><tr><td>lawn mowing melbourne</td><td>320</td><td>$3.38</td><td>$3.80</td></tr><tr><td>garden maintenance melbourne</td><td>90</td><td>$3.23</td><td>$4.25</td></tr><tr><td><strong>ndis home maintenance</strong></td><td><strong>20</strong></td><td>$5.35</td><td>$17.93</td></tr></tbody></table></div>
+<p><em>(Source: Google keyword market data volumes, Melbourne, 10/06/2026.)</em></p>
+<p>Two conclusions:</p>
+<ol><li><strong>The demand is in landscaping + generic gardening (~3,000+ searches/mo combined). NDIS search demand is effectively nil (~20/mo).</strong> Running three NDIS <em>search</em> campaigns chases a market that isn't searching. NDIS belongs on content, referral and Meta — not Google Search.</li><li><strong>The account's landscaping CPC (~$2.23) is below the $4.39 market rate</strong> — so cost-per-click isn't the problem. The problem is it only captures ~10% of available impressions because Quality Score (3/10) and budget cap it. There is large, cheap headroom here if QS and budget are fixed.</li></ol>
+</div></section>
+<section class="section alt" id="sec-5">
+<div class="section-inner">
+<span class="eyebrow">Part 5</span>
+<h2>5. Findings</h2>
+<h3>🔴 P0 — Stop the waste (this week)</h3>
+<p><strong>P0-1 · Pause the Display campaign.</strong> $392 this month at $78/lead vs $18 on search, with the softest conversions in the account. Display is the wrong channel for local quote intent. <em>Saving: redirect ~$20/day (~$600/mo) to Search.</em></p>
+<p><strong>P0-2 · Pause the live NDIS Search campaign (20-May) as-is.</strong> $364 → 2 leads → $182/lead, against ~20 NDIS searches/mo. It is paying $5 clicks for generic "gardener near me" traffic dressed up as NDIS. Stop it now; rebuild NDIS off-search later (see P2). <em>Saving: ~$9–20/day.</em></p>
+<p><strong>P0-3 · Strip unverified trust claims from all live ads — compliance blocker.</strong> Currently running, verbatim: "Rated 4.9 For NDIS Families", "Trusted By 50+ NDIS Families", "Trusted By 200+ Happy Clients", "4.9 Rated Yard Care You Trust", "Rated 4.9 from 50+ reviews", callout "Trusted by 200+ clients", sitelink "4.9 from 50+ Reviews". The brand guide (§11, §12) flags the 4.9 rating, the 50+/200+ counts, and "licensed" as <strong>unverified — do not publish as fact</strong> until Zafer provides a GBP screenshot for the rating/count and an insurance/licence certificate. Replace with the compliant RSAs below until evidenced.</p>
+<h3>🟠 P1 — Structure &amp; measurement (next 2 weeks)</h3>
+<p><strong>P1-1 · Concentrate budget on the winner.</strong> Landscaping Search loses 25% of impressions to budget. Lift its daily budget (start ~$50–60, funded by the paused Display/NDIS spend) and keep it the priority. It has proven $18 leads with room to grow.</p>
+<p><strong>P1-2 · Fix Quality Score on Landscaping.</strong> Main keyword "landscaping" sits at QS 3. Split the single "Ad group 1" into tight themes (e.g. <em>Landscaping</em>, <em>Landscapers near me</em>, <em>Backyard / outdoor design</em>), each with a matching headline set and the right offer page. Tighter keyword→ad→page relevance is what moves QS from 3 toward 7+ — which lowers CPC <em>and</em> recovers a chunk of the 70% rank-lost impression share.</p>
+<p><strong>P1-3 · Stop the campaign churn.</strong> Eight paused/removed campaigns clutter the account and risk accidental re-enabling. Keep one campaign per theme and <em>iterate inside it</em> (new keywords/ads in new ad groups) rather than launching a new dated campaign each week — every relaunch resets the bidding learning period.</p>
+<p><strong>P1-4 · Right-size bidding for low volume.</strong> Maximise Conversions needs ~15–30 conversions/month to learn. The $9/day Garden campaign will never get there. Either fold Garden maintenance into a properly funded campaign or start it on Manual/Maximise-Clicks with a CPC cap until it has volume.</p>
+<p><strong>P1-5 · Add the generic-but-relevant terms as negatives where they leak.</strong> "gardener near me" ($31, 0 conv) and "garden maintenance near me" ($65, 0 conv) are firing inside NDIS/landscaping campaigns where they don't belong. Tighten match types and route them to the correct theme.</p>
+<h3>🟡 P2 — Hygiene &amp; scale (this month)</h3>
+<ul><li><strong>P2-1 · Clean the account up:</strong> remove the 8 dead campaigns once learnings are noted; rename survivors to a clean convention (<code>Search • Landscaping</code>, <code>Search • Garden Maintenance</code>, etc.) instead of <code>DD-Mon || …</code>.</li><li><strong>P2-2 · Rebuild NDIS off-search:</strong> near-zero search demand means NDIS should run via Meta (audience targeting), the support-coordinator flyer already produced, and referral — not Google Search.</li><li><strong>P2-3 · Fix the conversion setup:</strong> drop "YouTube follow-on views" from counted conversions (no video running — it's noise in the bidding signal), and assign rough lead values per type (e.g. landscaping enquiry &gt; maintenance enquiry) so smart bidding can optimise toward higher-value leads.</li><li><strong>P2-4 · Fix the garbled structured snippet</strong> ("Households all routine.", "Best Values with Garden") — replace with real service values; remove the "Best" superlative.</li><li><strong>P2-5 · Add a small branded campaign</strong> ("Melbourne GreenWorks") to defend the brand term cheaply — currently competitors can sit above your own name. Low budget, high ROI.</li><li><strong>P2-6 · Trial Performance Max</strong> only <em>after</em> Search is clean and converting, using verified assets — not before.</li></ul>
+</div></section>
+<section class="section" id="sec-6">
+<div class="section-inner">
+<span class="eyebrow">Part 6</span>
+<h2>6. 7-day action queue</h2>
+<div class="table-wrap"><table><thead><tr><th>Day</th><th>Action</th><th>Owner</th></tr></thead><tbody><tr><td>Today</td><td>Pause Display (12-May) + NDIS Search (20-May). Swap the 3 live RSAs for the compliant versions below.</td><td>Mahbub</td></tr><tr><td>Day 1</td><td>Lift Landscaping Search budget to ~$50/day; confirm it stays the priority campaign.</td><td>Mahbub</td></tr><tr><td>Day 2–3</td><td>Split Landscaping "Ad group 1" into 3 themed ad groups with matched headlines + offer pages.</td><td>Mahbub</td></tr><tr><td>Day 3</td><td>Remove "YouTube follow-on views" from counted conversions; check call + form tags firing.</td><td>Mahbub</td></tr><tr><td>Day 4</td><td>Add a small branded "Melbourne GreenWorks" search campaign (~$5/day).</td><td>Mahbub</td></tr><tr><td>Day 5</td><td>Request from Zafer: GBP rating/review screenshot + insurance/licence certificate to re-enable trust claims.</td><td>Amin → Zafer</td></tr><tr><td>Day 7</td><td>Note learnings, archive the 8 dead campaigns, rename survivors.</td><td>Mahbub</td></tr></tbody></table></div>
+</div></section>
+<section class="section alt" id="sec-7">
+<div class="section-inner">
+<span class="eyebrow">Part 7</span>
+<h2>7. Compliant RSA rewrites</h2>
+<p>All ratings, review counts, "licensed" and "best" removed; no em dashes; Australian English. Swap back the verified figures once Zafer supplies evidence.</p>
+<p><strong>Landscaping Search</strong> <em>(→ /landscaping-offer/)</em></p>
+<p>Headlines: <code>Melbourne Landscaping Team</code> · <code>Free Quote in 24 Hours</code> · <code>Design, Build and Cleanup</code> · <code>Transform Your Outdoor Space</code> · <code>One Team for Your Whole Yard</code> · <code>Trusted Local Landscapers</code> · <code>Decking, Paving and More</code> · <code>No More Contractor Juggling</code> · <code>Backyards Built Properly</code> · <code>Stress-Free Landscaping</code></p>
+<p>Descriptions: <code>We handle design, build and cleanup, so you avoid the stress, delays and confusion.</code> · <code>Free quote in 24 hours from one local team that manages your project start to finish.</code> · <code>Your yard done properly, without juggling multiple trades or chasing tradies.</code> · <code>Transform your outdoor space into somewhere you genuinely enjoy every day.</code></p>
+<p><strong>Garden / Home Maintenance</strong> <em>(→ /maintenance-offer/)</em></p>
+<p>Headlines: <code>Weekly Garden Maintenance</code> · <code>Plans From $197 a Week</code> · <code>We Handle Lawn and Garden</code> · <code>One Plan for Your Whole Home</code> · <code>Never Mow the Lawn Again</code> · <code>Fully Managed Garden Care</code> · <code>Same Local Team Each Week</code> · <code>Get Your Weekends Back</code> · <code>Lawn, Garden and Cleaning</code> · <code>Reliable Weekly Upkeep</code></p>
+<p>Descriptions: <code>Fully managed weekly garden care from $197 a week, handled by one local Melbourne team.</code> · <code>We handle lawn and garden every week, so you never lift a finger or lose another weekend.</code> · <code>Lawn, garden and home care on a reliable weekly rhythm. Free quote in 24 hours.</code> · <code>One local team, one weekly plan, everything handled. Check availability in your area.</code></p>
+<p><strong>NDIS (if rebuilt — soften provider implication)</strong> <em>(→ /ndis-maintenance/)</em></p>
+<p>Headlines: <code>Weekly Home Support</code> · <code>Reliable Garden and Home Care</code> · <code>Support That Shows Up</code> · <code>A Cleaner, Safer Home</code> · <code>Same Team Every Visit</code> · <code>Respectful In-Home Support</code> · <code>Book a Free Assessment Call</code> · <code>Weekly Home Maintenance</code> · <code>We Work With You</code> · <code>Consistent Weekly Care</code></p>
+<p>Descriptions: <code>Reliable weekly home and garden support from one consistent, respectful local team.</code> · <code>A cleaner, safer home with the same crew every visit. Book a free assessment call.</code> · <code>We support self, plan and agency-managed participants with everyday home upkeep.</code> · <code>Indoor and outdoor home care on a dependable weekly routine. Free assessment call.</code></p>
+<div class="callout">NDIS note: Melbourne GreenWorks is <strong>not</strong> a registered NDIS provider. Copy must avoid "registered", "under the cap" or any funding-approval language (brand guide §14). The rewrites above describe the service, not a funding status.</div>
+</div></section>
+<section class="section" id="sec-8">
+<div class="section-inner">
+<span class="eyebrow">Part 8</span>
+<h2>8. What's already done well</h2>
+<p>Not everything needs fixing. Worth keeping:</p>
+<ul><li><strong>Conversion tracking is live and sensible</strong> — phone calls and three separate lead-form tags are counted as primary goals.</li><li><strong>Negative-keyword discipline is genuinely good</strong> — three themed shared lists (281 / 298 / 224 terms) built and attached to the live search campaigns; "cheap", "hire", "DIY" type terms are already being blocked ($0 spend on them).</li><li><strong>Ad strength is Excellent/Good</strong> across the live RSAs, and <strong>every ad points to its own offer page</strong>, not the homepage — a common mistake that's been avoided here.</li><li><strong>Landscaping Search proves the model works</strong> at $18/lead. The job now is to give it room and stop the surrounding waste.</li></ul>
+<p><em>Read-only audit. No spend, bid, keyword or creative change was made to the account. Every recommendation is queued for Mahbub/Zafer to apply.</em></p>
+</div></section>
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="brand-block">
+      <img src="https://reports.megamarketing.com.au/public/assets/mega/mega-secondary-logo.png" alt="MEGA Marketing">
+      <p>Prepared by MEGA Marketing for Melbourne GreenWorks. We build, scale, and report on growth systems for Australian service businesses.</p>
+    </div>
+    <div>
+      <h5>This report</h5>
+      <ul>
+        <li><a href="#sec-2">Scorecard</a></li><li><a href="#sec-5">Findings</a></li><li><a href="#sec-6">Action queue</a></li><li><a href="#sec-7">Ad copy</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>MEGA Marketing</h5>
+      <ul>
+        <li><a href="https://megamarketing.com.au">megamarketing.com.au</a></li>
+        <li><a href="https://megamarketing.com.au/portfolio">Portfolio</a></li>
+        <li><a href="https://link.megamarketing.com.au/widget/booking/K9UqeXX37jyeSguz6SuN?utm_source=client-report&amp;utm_medium=report-footer&amp;utm_campaign=melbourne-greenworks&amp;utm_content=google-ads-audit">Book a call</a></li>
+        <li><a href="mailto:hello@megamarketing.com.au">hello@megamarketing.com.au</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="left">© 2026 MEGA Marketing · Confidential — for Melbourne GreenWorks use only</div>
+    <div class="right">
+      Generated 10/06/2026
+      <a href="https://megamarketing.com.au">megamarketing.com.au</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
