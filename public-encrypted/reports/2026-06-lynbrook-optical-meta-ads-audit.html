@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meta Ads Audit & Optimisation — Lynbrook Optical</title>
+<meta name="generator" content="MEGA Marketing report system">
+<style>
+  :root {
+    --client-name: "Lynbrook Optical";
+    --client-primary: #1E2B47;
+    --client-secondary: #EAEAEA;
+    --client-accent: #21216F;
+    --client-logo: url('https://lynbrookoptical.com.au/wp-content/themes/lynbrookoptical/assets/media/logo.png');
+  }
+  /* ===================================================================
+   MEGA Marketing × Client co-branded report stylesheet
+   Webpage-style — modelled on megamarketing.com.au.
+   Conforms to: _shared/canonical-ownership.md v1.0
+   ===================================================================
+   Required CSS variables (renderer injects these into :root BEFORE this loads,
+   pulled from client-<slug>/brandguide.md §6):
+
+     --client-name        e.g. "Lynbrook Optical"
+     --client-primary     e.g. #1B3A5C   (used for buttons, links, accents)
+     --client-secondary   e.g. #C9A65A   (headings dark / hero text)
+     --client-accent      e.g. #E2B341   (highlights, hover, emoji bg)
+     --client-logo        e.g. url(...)  (top-left nav)
+   =================================================================== */
+
+:root {
+  /* MEGA agency colours — fixed, never overridden */
+  --mega-primary: #0E3F56;
+  --mega-cyan: #2BC8DD;
+  --mega-green: #2BDD99;
+
+  /* Neutral palette (megamarketing.com.au feel) */
+  --ink: #1a1a1a;
+  --ink-soft: #444;
+  --muted: #6b7280;
+  --rule: #e5e7eb;
+  --paper: #ffffff;
+  --soft: #f8fafc;
+  --softer: #f3f4f6;
+
+  /* Client fallbacks — overridden per-render */
+  --client-name: "Client";
+  --client-primary: var(--mega-primary);
+  --client-secondary: var(--ink);
+  --client-accent: var(--mega-cyan);
+  --client-logo: url('https://reports.megamarketing.com.au/public/assets/mega/mega-primary-logo.png');
+
+  /* Derived state colours (soft tints) */
+  --client-primary-soft: color-mix(in srgb, var(--client-primary) 8%, white);
+  --client-accent-soft: color-mix(in srgb, var(--client-accent) 14%, white);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--client-primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* -- Typography ------------------------------------------------------ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: 48px; font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-size: 32px; }
+h3 { font-size: 20px; }
+h4 { font-size: 18px; }
+p  { margin: 0 0 16px; }
+strong { color: var(--ink); font-weight: 600; }
+.lead { font-size: 18px; color: var(--muted); line-height: 1.65; }
+
+/* -- Top navigation -------------------------------------------------- */
+
+.topnav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+.topnav-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 32px;
+}
+/* Client brand block is NON-clickable by design — it's identity, not navigation.
+   Always wrap in <div class="brand">, never <a>. */
+.topnav .brand {
+  display: flex; align-items: center;
+}
+.topnav .brand img {
+  height: 40px;
+  max-width: 200px;
+  object-fit: contain;
+  display: block;
+}
+.topnav nav {
+  display: flex; align-items: center; gap: 24px;
+}
+.topnav nav a {
+  font-size: 14px; font-weight: 500;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.topnav nav a:hover { color: var(--client-primary); text-decoration: none; }
+.topnav .cta {
+  background: var(--client-primary);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px; font-weight: 600;
+}
+.topnav .cta:hover { filter: brightness(0.92); text-decoration: none; }
+
+/* Mobile: hide section nav links, keep logo + cta */
+@media (max-width: 720px) {
+  .topnav nav { display: none; }
+  .topnav .cta { padding: 8px 14px; font-size: 13px; }
+}
+
+/* -- Hero ------------------------------------------------------------ */
+
+.hero {
+  padding: 80px 32px 64px;
+  background: linear-gradient(180deg, var(--paper) 0%, var(--soft) 100%);
+}
+.hero-inner {
+  max-width: 1180px; margin: 0 auto;
+  text-align: center;
+}
+.hero .eyebrow {
+  display: inline-block;
+  background: var(--client-accent-soft);
+  color: var(--client-primary);
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-size: 56px;
+  max-width: 800px;
+  margin: 0 auto 18px;
+  color: var(--ink);
+}
+.hero .lead {
+  max-width: 640px;
+  margin: 0 auto 32px;
+}
+.hero .meta {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 13px; color: var(--muted);
+  font-weight: 500;
+}
+.hero .meta .dot { color: var(--rule); }
+
+/* Headline KPI strip (optional, sits below hero text) */
+.headline-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 1080px;
+  margin: 40px auto 0;
+}
+.headline-strip .cell {
+  background: var(--paper);
+  padding: 24px 20px;
+  text-align: center;
+}
+.headline-strip .cell .v {
+  font-size: 32px; font-weight: 700; color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.headline-strip .cell .l {
+  font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); margin-top: 4px;
+}
+@media (max-width: 720px) {
+  .hero h1 { font-size: 36px; }
+  .hero { padding: 48px 24px 32px; }
+  .headline-strip { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* -- Section structure ---------------------------------------------- */
+
+.section {
+  padding: 80px 32px;
+  background: var(--paper);
+}
+.section.alt { background: var(--soft); }
+.section-inner { max-width: 1080px; margin: 0 auto; }
+
+.section .eyebrow {
+  display: inline-block;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--client-primary);
+  margin-bottom: 12px;
+}
+.section h2 {
+  font-size: 36px;
+  max-width: 720px;
+  margin-bottom: 20px;
+}
+.section h2.center { margin-left: auto; margin-right: auto; text-align: center; }
+.section .lead.center { text-align: center; margin-left: auto; margin-right: auto; }
+
+@media (max-width: 720px) {
+  .section { padding: 56px 24px; }
+  .section h2 { font-size: 28px; }
+}
+
+/* -- Feature cards (with emoji icons) ------------------------------ */
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  margin-top: 40px;
+}
+.feature {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 32px 28px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.feature:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+  border-color: var(--client-primary);
+}
+.feature .emoji {
+  font-size: 36px;
+  line-height: 1;
+  margin-bottom: 16px;
+  display: block;
+}
+.feature h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.feature p {
+  font-size: 14px; color: var(--muted);
+  margin: 0;
+}
+.feature .meta {
+  font-size: 13px; color: var(--client-primary);
+  font-weight: 600; margin-top: 12px;
+}
+
+/* -- KPI cards (number-led variant) ---------------------------------- */
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 32px 0;
+}
+.kpi {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 24px;
+}
+.kpi .label {
+  font-size: 11px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--muted);
+}
+.kpi .value {
+  font-size: 36px; font-weight: 700;
+  color: var(--ink); margin: 8px 0 4px;
+  letter-spacing: -0.02em;
+}
+.kpi .delta { font-size: 13px; color: var(--muted); font-weight: 500; }
+.kpi .delta.up { color: #15803D; }
+.kpi .delta.down { color: #DC2626; }
+
+/* -- Two-column comparison (like Traditional vs Simple Sites) ------- */
+
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-top: 40px;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.compare > div { padding: 32px 28px; }
+.compare .left { background: var(--softer); }
+.compare .right { background: var(--client-primary-soft); border-left: 1px solid var(--rule); }
+.compare h3 { font-size: 18px; margin-bottom: 18px; }
+.compare ul { list-style: none; padding: 0; margin: 0; }
+.compare li { padding: 8px 0 8px 28px; position: relative; font-size: 14px; color: var(--ink-soft); }
+.compare .left li::before { content: '✕'; color: #DC2626; position: absolute; left: 0; font-weight: 700; }
+.compare .right li::before { content: '✓'; color: #15803D; position: absolute; left: 0; font-weight: 700; }
+@media (max-width: 720px) {
+  .compare { grid-template-columns: 1fr; }
+  .compare .right { border-left: 0; border-top: 1px solid var(--rule); }
+}
+
+/* -- Tables ---------------------------------------------------------- */
+
+.table-wrap {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 24px 0;
+}
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th {
+  background: var(--soft);
+  font-weight: 600; font-size: 12px;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--muted);
+}
+tr:last-child td { border-bottom: 0; }
+tr.total td { background: var(--soft); font-weight: 600; color: var(--ink); }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* -- Callouts -------------------------------------------------------- */
+
+.callout {
+  background: var(--client-accent-soft);
+  border-left: 4px solid var(--client-accent);
+  border-radius: 0 8px 8px 0;
+  padding: 18px 22px;
+  margin: 24px 0;
+  font-size: 14px; line-height: 1.6;
+  color: var(--ink-soft);
+}
+.callout.warn { background: #FEF3C7; border-left-color: #F59E0B; }
+.callout.good { background: #D1FAE5; border-left-color: #10B981; }
+.callout strong { color: var(--ink); }
+
+/* -- Lists with emoji bullets -------------------------------------- */
+
+ul.emoji-list { list-style: none; padding: 0; margin: 16px 0; }
+ul.emoji-list li {
+  position: relative;
+  padding: 6px 0 6px 32px;
+  font-size: 15px; color: var(--ink-soft);
+}
+ul.emoji-list li::before {
+  content: attr(data-emoji);
+  position: absolute; left: 0; top: 4px;
+  font-size: 18px;
+}
+
+ul.check { list-style: none; padding: 0; margin: 12px 0; }
+ul.check li {
+  position: relative; padding: 6px 0 6px 28px;
+  font-size: 15px; color: var(--ink-soft);
+}
+ul.check li::before {
+  content: '✓'; position: absolute; left: 0;
+  color: var(--client-primary); font-weight: 700;
+}
+
+/* -- Asset / image cards (clickable to Drive) ----------------------- */
+
+.asset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 32px;
+  align-items: start;
+}
+.asset-card {
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--paper);
+  text-decoration: none; color: inherit;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.asset-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  text-decoration: none;
+}
+/* Asset images render at their NATURAL aspect ratio — never cropped.
+   Mixed 1:1 / 4:5 / 9:16 cards in one grid will have different heights;
+   align-items: start on .asset-grid makes that look intentional. */
+.asset-card img { width: 100%; height: auto; display: block; background: var(--soft); }
+.asset-card .meta { padding: 14px 18px; }
+.asset-card .meta .title { font-weight: 600; color: var(--ink); margin-bottom: 4px; font-size: 14px; }
+.asset-card .meta .sub { font-size: 12px; color: var(--muted); }
+.asset-card .meta .open { font-size: 12px; color: var(--client-primary); font-weight: 600; margin-top: 8px; }
+.asset-card .meta .open::after { content: ' ↗'; }
+
+/* -- Tags ------------------------------------------------------------ */
+
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.5px;
+  background: var(--softer); color: var(--ink-soft);
+  margin-right: 4px;
+}
+.tag.win { background: #D1FAE5; color: #065F46; }
+.tag.warn { background: #FEF3C7; color: #92400E; }
+.tag.fail { background: #FEE2E2; color: #991B1B; }
+.tag.brand { background: var(--client-accent-soft); color: var(--client-primary); }
+
+/* -- Footer (dark, like megamarketing.com.au) ---------------------- */
+
+.site-footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding: 56px 32px 32px;
+}
+.site-footer-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.site-footer .brand-block { max-width: 360px; }
+.site-footer .brand-block img { height: 52px; margin-bottom: 20px; }
+.site-footer .brand-block p { font-size: 13px; color: #94a3b8; line-height: 1.6; margin: 0; }
+.site-footer h5 {
+  color: #fff; font-size: 12px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px;
+}
+.site-footer ul { list-style: none; padding: 0; margin: 0; }
+.site-footer ul li { margin: 8px 0; }
+.site-footer ul li a { font-size: 13px; color: #cbd5e1; text-decoration: none; }
+.site-footer ul li a:hover { color: #fff; text-decoration: underline; }
+
+.site-footer .bottom {
+  max-width: 1180px;
+  margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid #1e293b;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; color: #64748b;
+}
+.site-footer .bottom .right a { color: #cbd5e1; margin-left: 16px; }
+
+@media (max-width: 720px) {
+  .site-footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .site-footer .bottom { flex-direction: column; gap: 8px; }
+}
+
+/* -- Print niceties (PDF export) ----------------------------------- */
+
+@media print {
+  .topnav { position: static; }
+  .topnav .cta, .topnav nav a { display: none; }
+  .section { padding: 24px 0; page-break-inside: avoid; }
+  .feature:hover, .asset-card:hover { transform: none; box-shadow: none; }
+}
+
+  
+</style>
+</head>
+<body>
+
+<!-- ============================ TOP NAV ============================ -->
+<header class="topnav">
+  <div class="topnav-inner">
+    <div class="brand">
+      <!-- Client logo: identity, not navigation. Never wrap in <a>. -->
+      <img src="https://lynbrookoptical.com.au/wp-content/themes/lynbrookoptical/assets/media/logo.png" alt="Lynbrook Optical">
+    </div>
+    <nav>
+      <a href="#sec-1">Verdict</a><a href="#sec-2">Scorecard</a><a href="#sec-4">Findings</a><a href="#sec-7">Action queue</a>
+    </nav>
+    <a class="cta" href="#sec-7">Next steps</a>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- ============================ HERO ============================ -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Meta Ads Audit</span>
+    <h1>Meta Ads Audit & Optimisation</h1>
+    <p class="lead">Account act_830101954197630 · 90-day review</p>
+    <div class="meta">
+      <span>Lynbrook Optical</span>
+      <span class="dot">·</span>
+      <span>10/06/2026</span>
+      <span class="dot">·</span>
+      <span>Issued 10/06/2026</span>
+    </div>
+    <div class="headline-strip"><div class="cell"><div class="v">$687</div><div class="l">Spend (90 days)</div></div><div class="cell"><div class="v">0</div><div class="l">Booked-appt conversions</div></div><div class="cell"><div class="v">0 / 4</div><div class="l">Lead roles live</div></div><div class="cell"><div class="v">2.0 / 10</div><div class="l">Account health</div></div></div>
+  </div>
+</section>
+
+<!-- ============================ REPORT BODY ============================ -->
+<main>
+  <section class="section">
+<div class="section-inner">
+<p><strong>Account:</strong> act_830101954197630 ("Lynbrook Optical", AUD, Australia/Melbourne) · account active · lifetime spend A$8,537.49</p>
+<p><strong>Review window:</strong> 12/03/2026 – 10/06/2026 (90 days) + lifetime + full account structure</p>
+<p><strong>Prepared:</strong> 10/06/2026 · read-only diagnostic — no changes were made to the account</p>
+<p><strong>Benchmark:</strong> four-campaign lead-gen architecture (Prospecting / Scaling / Testing / Retargeting) · LP-traffic conversions · Advantage+ broad · optimise to qualified leads via CAPI</p>
+<p><strong>Companion report:</strong> Google Ads Audit (09/06/2026) — read together for the full paid picture</p>
+</div></section>
+<section class="section alt" id="sec-1">
+<div class="section-inner">
+<span class="eyebrow">Part 1</span>
+<h2>1. Verdict</h2>
+<p><strong>The Meta account is effectively dormant for lead generation, and has been for months.</strong> Over the last 90 days it spent <strong>A$686.77</strong> and produced <strong>zero tracked booked-appointment conversions</strong>. The only campaign currently live is a low-budget boosted Instagram post optimised for <em>Instagram-profile visits</em> — an objective that cannot produce an appointment. Every structured lead campaign that could book a patient is paused.</p>
+<p>When those lead campaigns last ran (March–April 2026), they were working against themselves: optimising to a soft "call-button-click" pixel proxy rather than a real booking, targeting a manual interest stack that included <strong>gamer interests (PC Gamer, PlayStation, Fortnite, Console gamers)</strong> on an optometry booking ad, with Advantage+ audience switched <strong>off</strong>. None of the four campaign roles is running. Retargeting audiences are built but starved (≈20 people each) and idle. There is no Conversions-API / booking-event measurement.</p>
+<p>In short: Meta is contributing nothing to the 40→60 weekly-appointment goal. The fix is not to tune what's there — it's a clean, budget-aware rebuild that optimises to the GHL booking event via CAPI, with the practice's recall database (the single biggest revenue lever in the blueprint) as the retargeting seed.</p>
+<p><strong>Overall account health: 2.0 / 10.</strong></p>
+</div></section>
+<section class="section" id="sec-2">
+<div class="section-inner">
+<span class="eyebrow">Part 2</span>
+<h2>2. Scorecard (12 dimensions)</h2>
+<div class="table-wrap"><table><thead><tr><th>#</th><th>Dimension</th><th>Score</th><th>One-line finding</th></tr></thead><tbody><tr><td>1</td><td>Campaign architecture</td><td>1/5</td><td>0 of 4 roles live; 38-campaign graveyard back to 2020; only a boosted post active</td></tr><tr><td>2</td><td>Objective fit</td><td>1/5</td><td>Sole live campaign is <code>VISIT_INSTAGRAM_PROFILE</code>; lead campaigns paused</td></tr><tr><td>3</td><td>Conversion location</td><td>4/5</td><td>LP-traffic / website (correct — not Instant Forms) when lead campaigns ran</td></tr><tr><td>4</td><td>Optimisation event + CAPI</td><td>1/5</td><td>Optimised to a soft CallButtonClick pixel proxy; no CAPI, no booking event</td></tr><tr><td>5</td><td>Pixel + events</td><td>3/5</td><td>Pixel healthy (fired 10/06/2026); only a soft custom conversion defined</td></tr><tr><td>6</td><td>Audience strategy</td><td>1/5</td><td>Manual interest stack incl. irrelevant gamer interests; Advantage+ audience OFF</td></tr><tr><td>7</td><td>Retargeting deployment</td><td>1/5</td><td>10 audiences built but ≈20 people each / "too small to use" / none in use</td></tr><tr><td>8</td><td>Budget split</td><td>1/5</td><td>No role split; ~A$2–7/day scattered boosts; below learning threshold</td></tr><tr><td>9</td><td>Learning + frequency</td><td>2/5</td><td>Never exits learning at this budget; lifetime frequency 3.37 (OK), no live signal</td></tr><tr><td>10</td><td>Creative volume + mix</td><td>1/5</td><td>Boosted single posts; no 15–25 video / 10–15 static launch volume</td></tr><tr><td>11</td><td>Creative angles + compliance</td><td>1/5</td><td>Brand/style only — 0 of the 6 lead-gen angles; AHPRA blockers open</td></tr><tr><td>12</td><td>Optimisation triggers + measurement</td><td>1/5</td><td>No structured testing/kill rules; reactive boosting; nothing to measure</td></tr></tbody></table></div>
+</div></section>
+<section class="section alt" id="sec-3">
+<div class="section-inner">
+<span class="eyebrow">Part 3</span>
+<h2>3. What's actually running</h2>
+<p><strong>One active campaign</strong> (everything else paused):</p>
+<div class="table-wrap"><table><thead><tr><th>Campaign</th><th>Objective</th><th>Optimisation goal</th><th>Status</th><th>Daily budget</th></tr></thead><tbody><tr><td>"Instagram post: New season, new style…"</td><td>LINK_CLICKS (Traffic)</td><td><code>VISIT_INSTAGRAM_PROFILE</code></td><td><strong>ACTIVE</strong></td><td>A$2.00/day</td></tr></tbody></table></div>
+<p>This is a boosted organic Instagram post (IG-only placement, Advantage+ audience on, 18km radius around Lynbrook). It drives profile visits — not website bookings, not even website traffic. It looks like internal-team organic boosting rather than agency-managed lead generation. <strong>It should not be counted as paid-lead activity</strong>, and at A$2/day optimised to profile visits it will never produce an appointment.</p>
+<p><strong>The 90-day spend, by campaign:</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Campaign</th><th>Objective</th><th>Status</th><th>Spend</th><th>Tracked bookings</th></tr></thead><tbody><tr><td>Lynbrook_optical _Conversion _31/03/26</td><td>OUTCOME_LEADS</td><td>PAUSED</td><td>A$366.88</td><td>0 (3 soft "Conversions" + 4 CallButtonClick pixel signals)</td></tr><tr><td>Lynbrook_optical _Conversion</td><td>OUTCOME_LEADS</td><td>PAUSED</td><td>A$202.14</td><td>0 (1 CallButtonClick pixel signal)</td></tr><tr><td>6 × boosted "Instagram post:…"</td><td>LINK_CLICKS / profile visits</td><td>mostly PAUSED</td><td>A$117.75</td><td>0 (engagement only)</td></tr><tr><td><strong>Total (90 days)</strong></td><td></td><td></td><td><strong>A$686.77</strong></td><td><strong>0 confirmed booked appointments</strong></td></tr></tbody></table></div>
+<p>For context, the account has spent <strong>A$8,537.49 over its lifetime</strong> (since 2023, 866,946 impressions) and recorded just <strong>7 confirmed click-to-call events</strong> in that entire period — most lifetime spend went to engagement / traffic / awareness objectives, not lead generation.</p>
+</div></section>
+<section class="section" id="sec-4">
+<div class="section-inner">
+<span class="eyebrow">Part 4</span>
+<h2>4. The five things costing you results</h2>
+<h3>P0 — Stop the waste, restore measurement (this week)</h3>
+<p><strong>P0-1 · Nothing is generating leads right now.</strong> The only live campaign optimises for Instagram-profile visits at A$2/day. Pause it (or hand it back to the internal social team as an organic boost) and accept that, until a lead campaign is rebuilt, Meta is producing zero appointments. <em>Evidence: campaign 120248014138860380, optimization_goal <code>VISIT_INSTAGRAM_PROFILE</code>.</em></p>
+<p><strong>P0-2 · There is no booking-event measurement — so Meta has been optimising to a click, not a patient.</strong> The lead campaigns optimised to a soft custom pixel conversion (CallButtonClick, conversion_id 30607057548908501). A call-button <em>click</em> is not a booked appointment. Stand up the <strong>GHL "Booking" event as a Meta Conversions-API (CAPI) offline event with value A$90</strong> — the exact mirror of the fix already queued on the Google side. This is the single highest-leverage change: without it, every future dollar still optimises to the wrong thing. <em>Evidence: ad tracking_specs across campaign 120244323323410380; no CAPI/offline event present; blueprint confirms "no lead-gen-form conversions visible".</em></p>
+<p><strong>P0-3 · Kill the irrelevant targeting before any relaunch.</strong> The A$366.88 lead campaign ran a manual interest stack containing <strong>PC Gamer, PlayStation, Fortnite, Console gamers</strong> on adsets named "Booking appointment" and "Prescription Glasses", with <strong>Advantage+ audience switched off</strong> (<code>advantage_audience: 0</code>). Manual narrowing on Advantage+ costs 20–40% in 2026, and these particular interests are simply wrong for an optometry booking. It returned 0 confirmed bookings. <em>Evidence: adsets 120244323323450380 / 120244323323390380 / 120244323323400380 targeting spec.</em></p>
+<h3>P1 — Architecture + measurement (next 2–4 weeks)</h3>
+<p><strong>P1-1 · Rebuild to a budget-aware Hybrid structure.</strong> Lynbrook is a <strong>Hybrid</strong> archetype (Google Search leads acquisition; Meta should carry prospecting + the lifecycle/retargeting layer). At the current ~A$7/day Meta budget you cannot run all four roles and clear the ~50-conversions/week learning threshold — so <strong>do not split four ways yet</strong>. Sequence it:</p>
+<ul><li><strong>Phase 1 (now, ~A$15–20/day): one Retargeting campaign</strong> off the CRM recall list + website visitors, LP-traffic to a tailored booking page, optimised to the GHL booking event via CAPI. Highest ROI for a small budget on a search-led account.</li><li><strong>Phase 2 (when budget supports it): add Prospecting</strong> (Advantage+ broad) for Avatar 1 (paediatric) timed to the Aug–Sep back-to-school search peak, then Testing + Scaling.</li></ul>
+<p><strong>P1-2 · Activate retargeting off the recall database — the blueprint's #1 revenue lever.</strong> The "2025 Health Fund Campaign" CRM list (≈1,000, ready) plus website-visitor audiences are exactly the seed the blueprint calls the largest single revenue lever (current 5% recall vs 41% industry = 8× headroom). They are built and sitting idle. Re-feed the starved website audiences (≈20 people each — they're empty because almost no paid traffic has hit the site) by driving paid LP traffic, and upload a fresh CRM export for the recall segment.</p>
+<p><strong>P1-3 · Clean the account.</strong> Archive the 38-campaign graveyard (2020–2026) so the account shows only the live roles. It's cosmetic but it removes the risk of an old A$60/day CBO campaign being un-paused by accident.</p>
+<p><strong>P1-4 · Set the benchmark + monitor measurement quality.</strong> Target <strong>≤ A$30–40 cost per booked-appointment lead</strong> (aligned to the Google cost/conversion baseline A$35.42 → A$30 target, and the ophthalmology healthcare CPL benchmark of ~A$30). Once CAPI is live, monitor <strong>Event Match Quality ≥ 6.0 and deduplication ≥ 90%</strong> weekly in Events Manager. <em>(Benchmark figures are industry references, not account metrics — see sources.)</em></p>
+<h3>P2 — Creative + scale</h3>
+<p><strong>P2-1 · Creative is brand/style only — none of the six lead-gen angles.</strong> The boosted posts ("New season, new style", "high quality, high class") sell aesthetics, not a reason to book. A lead launch needs <strong>15–25 videos + 10–15 statics</strong>, refreshed every 4–6 weeks, covering <strong>Trust / Qualification / Friction-reduction / Expert / Outcome-first / Risk-reversal</strong>. The companion <strong>creative pack (this cycle)</strong> delivers a first set of three concepts across those angles for Avatars 1 &amp; 2 — a starting point, not the full launch volume.</p>
+<p><strong>P2-2 · AHPRA compliance gates the $-offer creative.</strong> Four P1 blockers remain open and <strong>must close before any priced-offer ad runs</strong> (the $199-complete-glasses and 50%-off-second-pair offers): AHPRA registration number, professional-indemnity insurer + policy number, the empty <code>/privacy/</code> page, and the missing <code>/special-offers/terms</code> page. Every priced or discounted ad needs total-price disclosure and a "conditions apply — see [link]" line pointing to that terms page (brandguide §14, rules 1 &amp; 2). Trust/credibility creative (no price, no discount) can run before the blockers close.</p>
+</div></section>
+<section class="section alt" id="sec-5">
+<div class="section-inner">
+<span class="eyebrow">Part 5</span>
+<h2>5. Recommended Phase-1 structure (when you relaunch)</h2>
+<div class="table-wrap"><table><thead><tr><th>Role</th><th>Live now?</th><th>Recommendation</th><th>Budget guide</th></tr></thead><tbody><tr><td>Retargeting</td><td>Build first</td><td>CRM recall list + 30-day site visitors + FB/IG engagers → booking LP, CAPI-optimised to GHL booking</td><td>~60% of Meta budget in Phase 1</td></tr><tr><td>Prospecting</td><td>Phase 2</td><td>Advantage+ broad, Avatar 1 paediatric, Aug–Sep peak</td><td>~25% once added</td></tr><tr><td>Testing</td><td>Phase 2</td><td>1 angle = 1 adset, 5+ variations, fortnightly</td><td>~10%</td></tr><tr><td>Scaling</td><td>Phase 3</td><td>1 CBO adset, winners only, postID for social proof</td><td>~20% as performance allows</td></tr></tbody></table></div>
+<p><strong>Scale / kill triggers (apply once data flows):</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Action</th><th>Trigger</th></tr></thead><tbody><tr><td>Scale</td><td>Cost-per-booking below target 7+ days · daily spend &lt;30% of lead capacity · new creative ready</td></tr><tr><td>Kill / pause</td><td>Cost-per-booking above target 3+ days · frequency &gt;5 in 7 days · hook rate &lt;20% for 48h · no creative pipeline</td></tr></tbody></table></div>
+</div></section>
+<section class="section" id="sec-6">
+<div class="section-inner">
+<span class="eyebrow">Part 6</span>
+<h2>6. Channel-feed — how Google and Meta should work together</h2>
+<p>The Google Ads audit (09/06) found Google is the <strong>live lead channel</strong> (a running Brand campaign plus a recommended high-intent non-brand Search build). Meta is currently feeding <strong>nothing</strong> back. For a Hybrid account they should interlock:</p>
+<ul><li><strong>Shared measurement:</strong> both channels should optimise to the <strong>same GHL booking event</strong>. The Google audit already queued "make GHL Booking the primary, counted conversion (value A$90)"; Meta needs the identical event via CAPI. One source of truth for a booked patient.</li><li><strong>Search → Meta retargeting:</strong> people who click a Google Search ad but don't book are the warmest possible Meta retargeting audience — but that loop is broken today because no Meta retargeting campaign is live and the website audiences are starved.</li><li><strong>Division of labour:</strong> Google owns high-intent capture ("optometrist near me", "bulk-billed eye test"); Meta owns the <strong>lifecycle layer</strong> — reactivating the recall database and prospecting Avatar 1 ahead of the back-to-school window. That lifecycle layer is exactly what's missing.</li></ul>
+</div></section>
+<section class="section alt" id="sec-7">
+<div class="section-inner">
+<span class="eyebrow">Part 7</span>
+<h2>7. Seven-day action queue (for Aqsa)</h2>
+<ol><li><strong>Pause / reassign</strong> the active <code>VISIT_INSTAGRAM_PROFILE</code> boost; confirm with the internal team whether it's their organic boost. <em>(P0-1)</em></li><li><strong>Stand up the GHL booking event in Meta CAPI</strong>, value A$90; verify it receives events in Events Manager. <em>(P0-2)</em></li><li><strong>Build the Phase-1 Retargeting campaign</strong>: CRM recall list + 30-day site visitors → booking LP, Advantage+ broad, optimised to the booking event. <em>(P1-1, P1-2)</em></li><li><strong>Upload a fresh CRM recall export</strong> as a custom audience; build a lookalike off it once it's large enough. <em>(P1-2)</em></li><li><strong>Archive</strong> the paused 2020–2025 graveyard campaigns. <em>(P1-3)</em></li><li><strong>Review the creative pack</strong> (companion report) and prepare the first 3 concepts; hold any priced-offer ad until the AHPRA blockers close. <em>(P2-1, P2-2)</em></li><li><strong>Confirm budget</strong> for Phase 1 (~A$15–20/day) and the trigger thresholds above. <em>(P1-1)</em></li></ol>
+</div></section>
+<section class="section" id="sec-8">
+<div class="section-inner">
+<span class="eyebrow">Part 8</span>
+<h2>8. Method + sources</h2>
+<ul><li><strong>Account data:</strong> full read-only pull of the live account on 10/06/2026 — account info, all campaigns, ad sets, ads, 90-day + lifetime insights, pixels, and all 10 custom audiences. No write, spend, or upload call was made. Every figure above traces to that pull.</li><li><strong>Lead counting:</strong> booked-appointment conversions counted from confirmed pixel/booking events only; soft signals (CallButtonClick, link clicks, post engagement) are reported separately and <strong>not</strong> counted as bookings.</li><li><strong>Benchmarks (industry references, not account metrics):</strong> four-campaign lead-gen framework; healthcare CPL ophthalmology ~A$30 (LocaliQ Healthcare 2025); Google cost/conversion baseline A$35.42 → A$30 target (companion Google audit + blueprint §7); SMS-recall 41% median (Weave / MyBCAT, blueprint B5).</li><li><strong>Compliance:</strong> AHPRA advertising rules per brandguide §14 (total-price disclosure, T&amp;C-link requirement, no clinical-outcome testimonials, gentle recall framing, "Dr Amin Ali (Optometrist)" title rule). Four P1 blockers remain open.</li><li><strong>Canon:</strong> brandguide.md (audited 25/05/2026) for identity, voice, avatars, compliance; blueprint.md v2.0 for archetype, KPI targets, channel strategy.</li></ul>
+<p><em>Read-only audit. All recommendations are queued for the paid-ads manager to apply, approval-gated. Nothing in the account was changed.</em></p>
+</div></section>
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="brand-block">
+      <img src="https://reports.megamarketing.com.au/public/assets/mega/mega-secondary-logo.png" alt="MEGA Marketing">
+      <p>Prepared by MEGA Marketing for Lynbrook Optical. We build, scale, and report on growth systems for Australian service businesses.</p>
+    </div>
+    <div>
+      <h5>This report</h5>
+      <ul>
+        <li><a href="#sec-3">What's running</a></li><li><a href="#sec-5">Structure</a></li><li><a href="#sec-6">Channel-feed</a></li><li><a href="#sec-8">Method</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>MEGA Marketing</h5>
+      <ul>
+        <li><a href="https://megamarketing.com.au">megamarketing.com.au</a></li>
+        <li><a href="https://megamarketing.com.au/portfolio">Portfolio</a></li>
+        <li><a href="https://link.megamarketing.com.au/widget/booking/K9UqeXX37jyeSguz6SuN?utm_source=client-report&amp;utm_medium=report-footer&amp;utm_campaign=lynbrook-optical&amp;utm_content=meta-ads-audit">Book a call</a></li>
+        <li><a href="mailto:hello@megamarketing.com.au">hello@megamarketing.com.au</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="left">© 2026 MEGA Marketing · Confidential — for Lynbrook Optical use only</div>
+    <div class="right">
+      Generated 10/06/2026
+      <a href="https://megamarketing.com.au">megamarketing.com.au</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
