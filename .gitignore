@@ -5,3 +5,8 @@ node_modules/
 # Agency-internal metadata — must NEVER publish
 public-encrypted/reports/*.meta.json
 public/reports/*.meta.json
+
+# Plaintext report sources — NEVER serve or commit (found publicly served 13/07/2026)
+public-encrypted/
+.staticrypt.json
+encrypted/
