@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campaign Audit + Growth Plan — Labour Care</title>
+<meta name="generator" content="MEGA Marketing report system">
+<style>
+  :root {
+    --client-name: "Labour Care";
+    --client-primary: #236B65;
+    --client-secondary: #F4F3EF;
+    --client-accent: #EDA62A;
+    --client-logo: url('https://labourcare.com.au/logo.png');
+  }
+  /* ===================================================================
+   MEGA Marketing × Client co-branded report stylesheet
+   Webpage-style — modelled on megamarketing.com.au.
+   Conforms to: _shared/canonical-ownership.md v1.0
+   ===================================================================
+   Required CSS variables (renderer injects these into :root BEFORE this loads,
+   pulled from client-<slug>/brandguide.md §6):
+
+     --client-name        e.g. "Lynbrook Optical"
+     --client-primary     e.g. #1B3A5C   (used for buttons, links, accents)
+     --client-secondary   e.g. #C9A65A   (headings dark / hero text)
+     --client-accent      e.g. #E2B341   (highlights, hover, emoji bg)
+     --client-logo        e.g. url(...)  (top-left nav)
+   =================================================================== */
+
+:root {
+  /* MEGA agency colours — fixed, never overridden */
+  --mega-primary: #0E3F56;
+  --mega-cyan: #2BC8DD;
+  --mega-green: #2BDD99;
+
+  /* Neutral palette (megamarketing.com.au feel) */
+  --ink: #1a1a1a;
+  --ink-soft: #444;
+  --muted: #6b7280;
+  --rule: #e5e7eb;
+  --paper: #ffffff;
+  --soft: #f8fafc;
+  --softer: #f3f4f6;
+
+  /* Client fallbacks — overridden per-render */
+  --client-name: "Client";
+  --client-primary: var(--mega-primary);
+  --client-secondary: var(--ink);
+  --client-accent: var(--mega-cyan);
+  --client-logo: url('https://reports.megamarketing.com.au/public/assets/mega/mega-primary-logo.png');
+
+  /* Derived state colours (soft tints) */
+  --client-primary-soft: color-mix(in srgb, var(--client-primary) 8%, white);
+  --client-accent-soft: color-mix(in srgb, var(--client-accent) 14%, white);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--client-primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* -- Typography ------------------------------------------------------ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: 48px; font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-size: 32px; }
+h3 { font-size: 20px; }
+h4 { font-size: 18px; }
+p  { margin: 0 0 16px; }
+strong { color: var(--ink); font-weight: 600; }
+.lead { font-size: 18px; color: var(--muted); line-height: 1.65; }
+
+/* -- Top navigation -------------------------------------------------- */
+
+.topnav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+.topnav-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 32px;
+}
+/* Client brand block is NON-clickable by design — it's identity, not navigation.
+   Always wrap in <div class="brand">, never <a>. */
+.topnav .brand {
+  display: flex; align-items: center;
+}
+.topnav .brand img {
+  height: 40px;
+  max-width: 200px;
+  object-fit: contain;
+  display: block;
+}
+.topnav nav {
+  display: flex; align-items: center; gap: 24px;
+}
+.topnav nav a {
+  font-size: 14px; font-weight: 500;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.topnav nav a:hover { color: var(--client-primary); text-decoration: none; }
+.topnav .cta {
+  background: var(--client-primary);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px; font-weight: 600;
+}
+.topnav .cta:hover { filter: brightness(0.92); text-decoration: none; }
+
+/* Mobile: hide section nav links, keep logo + cta */
+@media (max-width: 720px) {
+  .topnav nav { display: none; }
+  .topnav .cta { padding: 8px 14px; font-size: 13px; }
+}
+
+/* -- Hero ------------------------------------------------------------ */
+
+.hero {
+  padding: 80px 32px 64px;
+  background: linear-gradient(180deg, var(--paper) 0%, var(--soft) 100%);
+}
+.hero-inner {
+  max-width: 1180px; margin: 0 auto;
+  text-align: center;
+}
+.hero .eyebrow {
+  display: inline-block;
+  background: var(--client-accent-soft);
+  color: var(--client-primary);
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-size: 56px;
+  max-width: 800px;
+  margin: 0 auto 18px;
+  color: var(--ink);
+}
+.hero .lead {
+  max-width: 640px;
+  margin: 0 auto 32px;
+}
+.hero .meta {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 13px; color: var(--muted);
+  font-weight: 500;
+}
+.hero .meta .dot { color: var(--rule); }
+
+/* Headline KPI strip (optional, sits below hero text) */
+.headline-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 1080px;
+  margin: 40px auto 0;
+}
+.headline-strip .cell {
+  background: var(--paper);
+  padding: 24px 20px;
+  text-align: center;
+}
+.headline-strip .cell .v {
+  font-size: 32px; font-weight: 700; color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.headline-strip .cell .l {
+  font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); margin-top: 4px;
+}
+@media (max-width: 720px) {
+  .hero h1 { font-size: 36px; }
+  .hero { padding: 48px 24px 32px; }
+  .headline-strip { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* -- Section structure ---------------------------------------------- */
+
+.section {
+  padding: 80px 32px;
+  background: var(--paper);
+}
+.section.alt { background: var(--soft); }
+.section-inner { max-width: 1080px; margin: 0 auto; }
+
+.section .eyebrow {
+  display: inline-block;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--client-primary);
+  margin-bottom: 12px;
+}
+.section h2 {
+  font-size: 36px;
+  max-width: 720px;
+  margin-bottom: 20px;
+}
+.section h2.center { margin-left: auto; margin-right: auto; text-align: center; }
+.section .lead.center { text-align: center; margin-left: auto; margin-right: auto; }
+
+@media (max-width: 720px) {
+  .section { padding: 56px 24px; }
+  .section h2 { font-size: 28px; }
+}
+
+/* -- Feature cards (with emoji icons) ------------------------------ */
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  margin-top: 40px;
+}
+.feature {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 32px 28px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.feature:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+  border-color: var(--client-primary);
+}
+.feature .emoji {
+  font-size: 36px;
+  line-height: 1;
+  margin-bottom: 16px;
+  display: block;
+}
+.feature h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.feature p {
+  font-size: 14px; color: var(--muted);
+  margin: 0;
+}
+.feature .meta {
+  font-size: 13px; color: var(--client-primary);
+  font-weight: 600; margin-top: 12px;
+}
+
+/* -- KPI cards (number-led variant) ---------------------------------- */
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 32px 0;
+}
+.kpi {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 24px;
+}
+.kpi .label {
+  font-size: 11px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--muted);
+}
+.kpi .value {
+  font-size: 36px; font-weight: 700;
+  color: var(--ink); margin: 8px 0 4px;
+  letter-spacing: -0.02em;
+}
+.kpi .delta { font-size: 13px; color: var(--muted); font-weight: 500; }
+.kpi .delta.up { color: #15803D; }
+.kpi .delta.down { color: #DC2626; }
+
+/* -- Two-column comparison (like Traditional vs Simple Sites) ------- */
+
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-top: 40px;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.compare > div { padding: 32px 28px; }
+.compare .left { background: var(--softer); }
+.compare .right { background: var(--client-primary-soft); border-left: 1px solid var(--rule); }
+.compare h3 { font-size: 18px; margin-bottom: 18px; }
+.compare ul { list-style: none; padding: 0; margin: 0; }
+.compare li { padding: 8px 0 8px 28px; position: relative; font-size: 14px; color: var(--ink-soft); }
+.compare .left li::before { content: '✕'; color: #DC2626; position: absolute; left: 0; font-weight: 700; }
+.compare .right li::before { content: '✓'; color: #15803D; position: absolute; left: 0; font-weight: 700; }
+@media (max-width: 720px) {
+  .compare { grid-template-columns: 1fr; }
+  .compare .right { border-left: 0; border-top: 1px solid var(--rule); }
+}
+
+/* -- Tables ---------------------------------------------------------- */
+
+.table-wrap {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 24px 0;
+}
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th {
+  background: var(--soft);
+  font-weight: 600; font-size: 12px;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--muted);
+}
+tr:last-child td { border-bottom: 0; }
+tr.total td { background: var(--soft); font-weight: 600; color: var(--ink); }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* -- Callouts -------------------------------------------------------- */
+
+.callout {
+  background: var(--client-accent-soft);
+  border-left: 4px solid var(--client-accent);
+  border-radius: 0 8px 8px 0;
+  padding: 18px 22px;
+  margin: 24px 0;
+  font-size: 14px; line-height: 1.6;
+  color: var(--ink-soft);
+}
+.callout.warn { background: #FEF3C7; border-left-color: #F59E0B; }
+.callout.good { background: #D1FAE5; border-left-color: #10B981; }
+.callout strong { color: var(--ink); }
+
+/* -- Lists with emoji bullets -------------------------------------- */
+
+ul.emoji-list { list-style: none; padding: 0; margin: 16px 0; }
+ul.emoji-list li {
+  position: relative;
+  padding: 6px 0 6px 32px;
+  font-size: 15px; color: var(--ink-soft);
+}
+ul.emoji-list li::before {
+  content: attr(data-emoji);
+  position: absolute; left: 0; top: 4px;
+  font-size: 18px;
+}
+
+ul.check { list-style: none; padding: 0; margin: 12px 0; }
+ul.check li {
+  position: relative; padding: 6px 0 6px 28px;
+  font-size: 15px; color: var(--ink-soft);
+}
+ul.check li::before {
+  content: '✓'; position: absolute; left: 0;
+  color: var(--client-primary); font-weight: 700;
+}
+
+/* -- Asset / image cards (clickable to Drive) ----------------------- */
+
+.asset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 32px;
+  align-items: start;
+}
+.asset-card {
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--paper);
+  text-decoration: none; color: inherit;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.asset-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  text-decoration: none;
+}
+/* Asset images render at their NATURAL aspect ratio — never cropped.
+   Mixed 1:1 / 4:5 / 9:16 cards in one grid will have different heights;
+   align-items: start on .asset-grid makes that look intentional. */
+.asset-card img { width: 100%; height: auto; display: block; background: var(--soft); }
+.asset-card .meta { padding: 14px 18px; }
+.asset-card .meta .title { font-weight: 600; color: var(--ink); margin-bottom: 4px; font-size: 14px; }
+.asset-card .meta .sub { font-size: 12px; color: var(--muted); }
+.asset-card .meta .open { font-size: 12px; color: var(--client-primary); font-weight: 600; margin-top: 8px; }
+.asset-card .meta .open::after { content: ' ↗'; }
+
+/* -- Tags ------------------------------------------------------------ */
+
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.5px;
+  background: var(--softer); color: var(--ink-soft);
+  margin-right: 4px;
+}
+.tag.win { background: #D1FAE5; color: #065F46; }
+.tag.warn { background: #FEF3C7; color: #92400E; }
+.tag.fail { background: #FEE2E2; color: #991B1B; }
+.tag.brand { background: var(--client-accent-soft); color: var(--client-primary); }
+
+/* -- Footer (dark, like megamarketing.com.au) ---------------------- */
+
+.site-footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding: 56px 32px 32px;
+}
+.site-footer-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.site-footer .brand-block { max-width: 360px; }
+.site-footer .brand-block img { height: 52px; margin-bottom: 20px; }
+.site-footer .brand-block p { font-size: 13px; color: #94a3b8; line-height: 1.6; margin: 0; }
+.site-footer h5 {
+  color: #fff; font-size: 12px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px;
+}
+.site-footer ul { list-style: none; padding: 0; margin: 0; }
+.site-footer ul li { margin: 8px 0; }
+.site-footer ul li a { font-size: 13px; color: #cbd5e1; text-decoration: none; }
+.site-footer ul li a:hover { color: #fff; text-decoration: underline; }
+
+.site-footer .bottom {
+  max-width: 1180px;
+  margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid #1e293b;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; color: #64748b;
+}
+.site-footer .bottom .right a { color: #cbd5e1; margin-left: 16px; }
+
+@media (max-width: 720px) {
+  .site-footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .site-footer .bottom { flex-direction: column; gap: 8px; }
+}
+
+/* -- Print niceties (PDF export) ----------------------------------- */
+
+@media print {
+  .topnav { position: static; }
+  .topnav .cta, .topnav nav a { display: none; }
+  .section { padding: 24px 0; page-break-inside: avoid; }
+  .feature:hover, .asset-card:hover { transform: none; box-shadow: none; }
+}
+
+  
+</style>
+</head>
+<body>
+
+<!-- ============================ TOP NAV ============================ -->
+<header class="topnav">
+  <div class="topnav-inner">
+    <div class="brand">
+      <!-- Client logo: identity, not navigation. Never wrap in <a>. -->
+      <img src="https://labourcare.com.au/logo.png" alt="Labour Care">
+    </div>
+    <nav>
+      {{NAV_LINKS}}
+    </nav>
+    <a class="cta" href="#next-steps">Next steps</a>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- ============================ HERO ============================ -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">{{REPORT_EYEBROW}}</span>
+    <h1>Campaign Audit + Growth Plan</h1>
+    <p class="lead">One dollar Compliance Starter Kit review and the plan for the remaining campaign period</p>
+    <div class="meta">
+      <span>Labour Care</span>
+      <span class="dot">·</span>
+      <span>01/06/2026 – 31/07/2026</span>
+      <span class="dot">·</span>
+      <span>Issued 13/07/2026</span>
+    </div>
+    {{HERO_STRIP}}
+  </div>
+</section>
+
+<!-- ============================ REPORT BODY ============================ -->
+<main>
+  <section class="section">
+  <div class="section-inner">
+    <p class="lead"><strong>Team briefing 14/07/2026.</strong> Audit window 01/06–13/07/2026. Every figure traces to platform data pulled 13/07/2026: Meta Ads, the CRM (contacts, conversations, calendars, opportunities, payments), the cold email platform, GA4 and Search Console. Known gaps: broadcast open rates are not exposed by the CRM; Ruby's call outcomes rest on her 86 logged notes (consistently present).</p>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="label">Ad spend (kit campaign)</div><div class="value">$715.12</div><div class="delta">12 leads · $59.59 CPL</div></div>
+      <div class="kpi"><div class="label">Kit revenue</div><div class="value">$32</div><div class="delta">38 orders · 32 paid</div></div>
+      <div class="kpi"><div class="label">Clients won</div><div class="value">0</div><div class="delta">3 calls booked · 2 held</div></div>
+      <div class="kpi"><div class="label">New SIL campaign CPL</div><div class="value">$15.54</div><div class="delta">6 leads in 5 days · 1 consult booked</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <h2>1. The result</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Funnel stage</th><th>Target</th><th>Actual</th></tr></thead>
+      <tbody>
+        <tr><td>Meta spend / leads / CPL</td><td>$30–50 CPL</td><td>$715.12 · 12 leads · $59.59 (final full week: <strong>$29.20</strong>)</td></tr>
+        <tr><td>Kit purchases</td><td>—</td><td>38 orders → 32 paid → <strong>$32 revenue</strong></td></tr>
+        <tr><td>Nurture + follow-up</td><td>automated + Ruby</td><td><strong>Delivered + 33/33 worked by Ruby (86 attempts)</strong> ✓</td></tr>
+        <tr><td>Kit → Discovery Call</td><td>15%</td><td><strong>9%</strong> (3 booked: 2 held, 1 cancelled)</td></tr>
+        <tr><td>→ Consultant Connect</td><td>two-call close</td><td><strong>0 won</strong></td></tr>
+        <tr><td>Cold email (2,649 list)</td><td>—</td><td>705 contacted · 62% unique opens · <strong>4 replies, all negative</strong> · 0 sales</td></tr>
+        <tr><td>Reactivation (448 warm)</td><td>—</td><td><strong>~7 of the 33 purchases — best channel per dollar</strong></td></tr>
+        <tr><td>New SIL Policy Pack (08–13/07)</td><td>—</td><td>$93.22 · <strong>6 leads · $15.54 CPL</strong> · provider-domain emails · 1 consult booked (16/07)</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <h2>2. Why — one root cause, three channels</h2>
+    <p><strong>The system worked; it worked on the wrong people.</strong> Nurture fired, Ruby followed up comprehensively, the landing page converted at a normal 2.7%. But:</p>
+    <ul>
+      <li><strong>Meta:</strong> ~30 of 33 buyers used personal email addresses. Targeting included "Support Worker" job titles; a $1 offer attracts support workers and aspiring providers, not provider decision-makers. One buyer told Ruby directly: "independent support worker, no use for consulting."</li>
+      <li><strong>Cold email:</strong> the list was allied-health clinicians — 2 of 4 replies said "we don't work in NDIS". 73% of the list never even sent.</li>
+      <li><strong>SEO (Search Console):</strong> our top organic queries are "how to become a plan manager", "how much do NDIS providers get paid", "is ndis business profitable" — the website attracts the same wrong audience organically.</li>
+    </ul>
+    <p>Meanwhile the SIL Policy Pack's first 5 days pulled provider-domain leads at $15.54 CPL against an $800 offer. <strong>A regulation-triggered, provider-specific offer does the qualifying that targeting can't.</strong> And real provider demand is visible and unserved in search: "ndis shell company regulations" (1,400 impressions, page 2), "ndis practice standards and quality indicators 2026".</p>
+    <div class="callout"><strong>Defects found (fix before relaunch):</strong> kit delivery failed for 4 of 33 buyers · purchase tag fires on failed payments · UTM chain verified working Meta→GA4 but <strong>breaks at the payment-link→CRM handoff</strong> (25 of 33 buyers unattributable) · reactivation email/SMS links untagged (58% of landing traffic shows "direct") · purchase events fire inconsistently (13 events vs 32 real orders) · internal test traffic pollutes GA4 · 3 written unsubscribe requests with 0 recorded suppressions (Spam Act — verify).</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <h2>3. The strategy — year-round compliance partner</h2>
+    <p><strong>Positioning:</strong> every NDIS provider is on the road to mandatory registration — SIL and platform providers since 1 July 2026, widening across provider types toward 2030. Registration is not a one-off scramble. <strong>Labour Care keeps providers compliant all year through Consultant Connect — so audit time is a non-event and their week is freed by having an expert in their corner.</strong></p>
+    <h3>The offer ladder (two rungs)</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Rung</th><th>Offer</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Entry: Operational Packs</strong></td><td>Templated policy/procedure packs per registration group — <strong>SIL is just this month's</strong>. $800 templated; significant customisation priced by hours</td><td>Self-qualifying doorway; fulfilment confirmed viable (Laura, Hashim, CZ, Amor)</td></tr>
+        <tr><td><strong>Core: Consultant Connect</strong></td><td><strong>From $180/month</strong> — scales with the hours of support their team needs each month. Includes the <strong>Labour Care Hub</strong> (training modules); additional hours purchasable anytime</td><td>The recurring engine. Growth = more hours, not new products</td></tr>
+      </tbody>
+    </table></div>
+    <h3>The monthly deal engine</h3>
+    <p>Each month Hashim + Laura nominate the next registration group. That month we run, for that group's pack:</p>
+    <ol>
+      <li><strong>Meta ads</strong> (statics first, winning angle gets video)</li>
+      <li><strong>Cold email wave</strong> to that group's segment of the rebuilt provider list</li>
+      <li><strong>Database reactivation</strong> for the deal</li>
+    </ol>
+    <p>The deal ends when the month ends — <strong>a real end date, so scarcity is genuine and ACCC-safe</strong>. Hashim/Laura can extend it for warm leads case by case. Every deal sells <em>registration group × best performing angle</em> — and every buyer conversation and nurture routes to Consultant Connect, which sells: <em>stay audit ready year round, don't scramble, get monthly support from $180/month</em>.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <h2>4. Ads campaign system — $1,000/month (approved)</h2>
+    <ul>
+      <li><strong>$600/mo core:</strong> the proven performer — currently SIL ("Mandatory SIL from July 1" ad, $12.43 CPL).</li>
+      <li><strong>$400/mo testing:</strong> 2–3 cells of <strong>registration group × angle</strong>, quick image creatives (our own data showed: statics converted, videos didn't). Kill at ~$50 with no qualified lead; winners graduate to core.</li>
+      <li><strong>Data loop (weekly):</strong> ads results + search/keyword data + organic engagement → what resonates in 2+ sources gets produced as video and fed to both ads and organic.</li>
+      <li><strong>KPI change:</strong> we measure <strong>cost per QUALIFIED lead</strong> (business domain / provider-status answer); qualifying questions go in the instant form.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <h2>5. Weekly organic content system</h2>
+    <ul>
+      <li><strong>Repurpose the kit video library:</strong> pain-point segments (audit stress, policy gaps, admin overload) are offer-agnostic — KEEP them; REPLACE offer/CTA segments using the AI avatar + the voice clone with stock overlay (or the customer-avatar video tool — Amin has access). Recut a video into 2 hook variants for weekly reels plugging the month's pack or free consult. Quality over quantity — SEO, ads, email marketing and database reactivation do the heavy lifting.</li>
+      <li><strong>Organic standard from now on:</strong> every weekly email and blog piece must provide value to the registered-provider audience and trace to a data source — search queries, keyword data, the industry research brief, customer voice, or an ad-test learning. No more generic stock reels/carousels/emails.</li>
+      <li><strong>Cadence:</strong> 1 email and 2 reels per week.</li>
+      <li><strong>Sequencing:</strong> keyword content mapping runs BEFORE the first organic rerun this week — the map feeds the calendar (Amin owns the SEO plan; Lorelei edits and publishes).</li>
+      <li>Compliance unchanged: no guaranteed-pass claims, no dashes, registration facts stated precisely.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <h2>6. Who does what</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Owner</th><th>This week (14–18/07)</th><th>Weeks 2–3 (to 31/07)</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Aqsa</strong></td><td>Meta restructure: $600 core / $400 test cells (image statics), pause dead "Audit ready" ad, fix ad copy (no dashes, no decorative bold characters), add provider-status qualifying question to lead form. <strong>With Sharif: verify UTM tracking end-to-end</strong></td><td>Weekly kill/scale on cells; report cost per qualified lead and best performers so Lorelei can create video variations</td></tr>
+        <tr><td><strong>Sharif</strong></td><td>Fix kit delivery bug + re-send to the 4 affected buyers. Fix tag-on-paid-only. Tracking: payment-link UTM passthrough, tag all CRM email/SMS links, consolidate purchase event, filter internal traffic. Instant SMS on SIL leads. <strong>Add "book a readiness call" CTA to the $1 kit page (approved)</strong></td><td>SEO build-out from Amin's keyword map ("ndis shell company regulations" is page 2 at 1,400 impressions)</td></tr>
+        <tr><td><strong>Ruby</strong></td><td><strong>Cold email: pause sends (approved); verify the 3 unsubscribe requests are suppressed.</strong> Start rebuilt provider list — <strong>Sydney + Melbourne first, decision makers + direct phones via Wiza.</strong> Same-day call SLA on SIL leads (check workflow). Prep Hodan consult brief for Hashim (16/07 — wants support, not documents: Consultant Connect conversation)</td><td>New cold email campaign to the Wiza list, then call the opens. <strong>Prepare database reactivation for the SIL deal.</strong> One segmentation email to the 33 kit buyers (provider? → call; else newsletter)</td></tr>
+        <tr><td><strong>Lorelei</strong></td><td>Video inventory + KEEP/REPLACE map; replacement lines for 2 best pain-point videos</td><td>Rebuild 2 videos (avatar + voice clone, 3 hooks each); weekly organic per section 5 standard</td></tr>
+        <tr><td><strong>CZ</strong></td><td>—</td><td><strong>Confirm with Laura + Hashim: the registration-group roadmap — which policy pack after SIL, in what order, at what price</strong> (feeds next month's deal)</td></tr>
+        <tr><td><strong>Hashim / Laura</strong></td><td>Hodan strategy call 16/07. Nominate next month's registration group + deal end date</td><td>Extend deals for warm leads as needed; monthly group nomination becomes standing agenda item</td></tr>
+        <tr><td><strong>Amin</strong></td><td>SEO plan via keyword content mapping (before the organic rerun)</td><td>31/07 readout: qualified CPL, consults, packs, CC subs → scale/kill decisions</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <h2>7. Decisions already made (for the record)</h2>
+    <p>$1,000/mo ad budget approved (client) · cold email pause + Ruby-only list rebuild approved · readiness-call CTA on kit page approved · SIL pack fulfilment confirmed at $800 templated (customisation priced by hours; Laura/Hashim/CZ/Amor) · $1 kit retained as downsell/nurture asset only · 1 email and 2 reels per week for organic.</p>
+    <div class="callout"><strong>Economics:</strong> one $800 pack sale covers 80% of a month's media. One Consultant Connect member at even the $180 floor is $2,160/yr recurring, and scales with hours. The 90-day target (8 Consultant Connect members) is reached through the retainer positioning — packs are doorways, not the destination.</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <h2>8. Discussion for today</h2>
+    <ol>
+      <li>Which registration group follows SIL — and this month's deal end date (Hashim/Laura).</li>
+      <li>Pack pricing per group (CZ proposal with Laura/Hashim).</li>
+      <li>Consultant Connect hours tiers — confirm how "from $180/month" scales so Ruby can quote consistently on calls.</li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="brand-block">
+      <img src="https://reports.megamarketing.com.au/public/assets/mega/mega-secondary-logo.png" alt="MEGA Marketing">
+      <p>Prepared by MEGA Marketing for Labour Care. We build, scale, and report on growth systems for Australian service businesses.</p>
+    </div>
+    <div>
+      <h5>This report</h5>
+      <ul>
+        {{FOOTER_NAV_LINKS}}
+      </ul>
+    </div>
+    <div>
+      <h5>MEGA Marketing</h5>
+      <ul>
+        <li><a href="https://megamarketing.com.au">megamarketing.com.au</a></li>
+        <li><a href="https://megamarketing.com.au/portfolio">Portfolio</a></li>
+        <li><a href="https://link.megamarketing.com.au/widget/booking/K9UqeXX37jyeSguz6SuN?utm_source=client-report&amp;utm_medium=report-footer&amp;utm_campaign={{CLIENT_SLUG}}&amp;utm_content={{REPORT_TYPE}}">Book a call</a></li>
+        <li><a href="mailto:hello@megamarketing.com.au">hello@megamarketing.com.au</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="left">© {{REPORT_YEAR}} MEGA Marketing · Confidential — for Labour Care use only</div>
+    <div class="right">
+      Generated 13/07/2026
+      <a href="https://megamarketing.com.au">megamarketing.com.au</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
