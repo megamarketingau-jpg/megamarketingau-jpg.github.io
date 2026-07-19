@@ -25,9 +25,15 @@ Files: `YYYY-MM-[client-slug]-[type].html`
 Example: `2026-05-labour-care-ads-report.html`
 
 ## Deploy
-- Push to main → GitHub Actions deploys in ~60 seconds
+- Push to main → GitHub Actions (`.github/workflows/deploy.yml`) publishes `public/` in ~60 seconds
 - Live URL: reports.megamarketing.com.au/[path]
 - NEVER force push to main
+- **Repo setting dependency:** Settings → Pages → Source must be **GitHub Actions**. If it is switched back to "Deploy from a branch", every report 404s again — branch-based Pages can only serve from `/` or `/docs`, and reports live in `public/`.
+- The workflow **fails the deploy** if any HTML under `public/` is not StatiCrypt-encrypted, or if any `.meta.json` is present. That gate is deliberate — free-tier Pages requires a public repo, so an unencrypted page is a live data leak. Allow-list is `public/index.html` and `public/404.html` only.
+- `public/index.html` is a deliberate dead-end landing page: no report index, no directory listing. `public/robots.txt` disallows all crawling.
+
+## Publishing gotcha
+The `.git/hooks/pre-commit` hook runs `encrypt.sh`, which ends with a blanket `git add public/` — it will sweep ANY untracked plaintext under `public/` into the commit. Stage the target client's files explicitly and commit with `--no-verify`. Confirm each `public/**/*.html` you stage contains `staticrypt` before committing.
 
 ## Commit style
 Add:, Fix:, Update:, Remove: — same as workspace repo

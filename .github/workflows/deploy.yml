@@ -1,0 +1,82 @@
+name: Deploy reports site
+
+# Publishes public/ to reports.megamarketing.com.au via GitHub Pages.
+#
+# Why this file exists: branch-based Pages can only serve from / or /docs.
+# Reports live in public/, so an Actions workflow is required. Without this
+# file nothing deploys and every report URL 404s (that was the state from the
+# 13/07/2026 plaintext-leak emergency fix until 19/07/2026).
+#
+# REPO SETTING REQUIRED: Settings → Pages → Source must be "GitHub Actions".
+# If it is set to "Deploy from a branch", this workflow will fail at the
+# deploy step.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # Hard gate. Every client-facing HTML page under public/ must be
+      # StatiCrypt-encrypted. Anything else is a data leak on a public domain,
+      # because free-tier Pages requires a public repo. Allow-list is
+      # deliberately tiny and explicit.
+      - name: Block unencrypted client pages
+        run: |
+          set -euo pipefail
+          ALLOWED="public/index.html public/404.html"
+          FAILED=0
+          while IFS= read -r f; do
+            case " $ALLOWED " in *" $f "*) continue ;; esac
+            if ! grep -qi "staticrypt" "$f"; then
+              echo "::error file=$f::Unencrypted client page would be published: $f"
+              FAILED=1
+            fi
+          done < <(find public -name '*.html' -type f | sort)
+          if [ "$FAILED" -ne 0 ]; then
+            echo "Deploy blocked. Encrypt via encrypt.sh, or add to the allow-list if genuinely public."
+            exit 1
+          fi
+          echo "All client pages encrypted."
+
+      # Agency-internal metadata must never be served, even though .gitignore
+      # should already keep it out. Belt and braces.
+      - name: Block internal metadata
+        run: |
+          set -euo pipefail
+          if find public -name '*.meta.json' -type f | grep -q .; then
+            find public -name '*.meta.json' -type f -printf '::error file=%p::Internal metadata would be published: %p\n'
+            exit 1
+          fi
+          echo "No internal metadata present."
+
+      # CNAME lives at repo root but Pages reads it from the published
+      # artifact, so it has to be copied in.
+      - name: Stage CNAME into artifact
+        run: cp CNAME public/CNAME
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

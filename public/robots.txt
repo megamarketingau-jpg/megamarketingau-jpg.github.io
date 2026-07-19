@@ -1,0 +1,3 @@
+# Client deliverables. Password-gated, and not for indexing.
+User-agent: *
+Disallow: /
